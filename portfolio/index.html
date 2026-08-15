@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portfolio professionnel de Gonçalvès Cédrick, développeur Web & Mobile spécialisé Laravel, Flutter, React, Architecture logicielle, et CMS (WordPress, Strapi)."
+    data-i18n-content="meta.description" />
+  <meta name="author" content="Gonçalvès Cédrick" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gonçalvès Cédrick | Développeur Web & Mobile" data-i18n-content="meta.og_title" />
+  <meta property="og:description"
+    content="Développeur Web & Mobile Fullstack spécialisé Laravel, Flutter, React, Architecture logicielle, CMS."
+    data-i18n-content="meta.og_description" />
+  <meta property="og:image" content="assets/images/image.png" />
+  <meta property="og:url" content="https://goncalves-cedrick.dev" />
+  <link rel="canonical" href="https://goncalves-cedrick.dev" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230B5CFF'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
+
+  <title data-i18n="meta.title">Gonçalvès Cédrick | Développeur Web & Mobile Fullstack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+          },
+          colors: {
+            brand: {
+              blue: "#0B5CFF",
+              navy: "#07111F",
+              ink: "#101828",
+              mist: "#F5F8FF",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body
+  class="bg-slate-50 font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"
+    class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 z-50 transition-all duration-75 w-0">
+  </div>
+
+  <header
+    class="fixed inset-x-0 top-0 z-40 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-slate-800/80 dark:bg-slate-900/80">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+      aria-label="Navigation principale">
+      <a href="#accueil"
+        class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 group">
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-bold transition-transform group-hover:scale-105">C</span>
+        <span>Cédrick<span class="text-blue-600 dark:text-blue-400">.dev</span></span>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle"
+          class="inline-flex h-10 px-3 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 text-xs font-bold"
+          aria-label="Changer de langue / Change language">
+          EN
+        </button>
+
+        <!-- Theme Switcher Button -->
+        <button id="theme-toggle"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+          aria-label="Changer le thème">
+          <svg id="theme-icon-sun" class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+
+        <button id="menu-toggle"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 lg:hidden"
+          aria-label="Ouvrir le menu" aria-expanded="false">
+          <span class="menu-icon"></span>
+        </button>
+      </div>
+
+      <div id="desktop-menu" class="hidden items-center gap-7 lg:flex">
+        <a class="nav-link" href="#accueil" data-i18n="nav.accueil">Accueil</a>
+        <a class="nav-link" href="#apropos" data-i18n="nav.apropos">À propos</a>
+        <a class="nav-link" href="#competences" data-i18n="nav.competences">Compétences</a>
+        <a class="nav-link" href="#projets" data-i18n="nav.projets">Projets</a>
+        <a class="nav-link" href="#experiences" data-i18n="nav.experiences">Expériences</a>
+        <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
+        <a class="btn btn-light shadow-sm border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+          href="assets/cv/CV_Goncalves_Cedrick.pdf" download data-i18n="nav.cv">
+          <svg class="w-4 h-4 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" x2="12" y1="15" y2="3" />
+          </svg>
+          CV
+        </a>
+      </div>
+    </nav>
+
+    <div id="mobile-menu"
+      class="hidden border-t border-slate-200 bg-white px-5 pb-5 dark:border-slate-800 dark:bg-slate-900 lg:hidden">
+      <div class="flex flex-col gap-4 pt-4">
+        <a class="mobile-link" href="#accueil" data-i18n="nav.accueil">Accueil</a>
+        <a class="mobile-link" href="#apropos" data-i18n="nav.apropos">À propos</a>
+        <a class="mobile-link" href="#competences" data-i18n="nav.competences">Compétences</a>
+        <a class="mobile-link" href="#projets" data-i18n="nav.projets">Projets</a>
+        <a class="mobile-link" href="#experiences" data-i18n="nav.experiences">Expériences</a>
+        <a class="mobile-link" href="#contact" data-i18n="nav.contact">Contact</a>
+        <a class="btn btn-primary w-full justify-center" href="assets/cv/CV_Goncalves_Cedrick.pdf" download
+          data-i18n="nav.download_cv">
+          <svg class="w-4 h-4 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" x2="12" y1="15" y2="3" />
+          </svg>
+          Télécharger mon CV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="accueil" class="hero-section relative min-h-screen pt-32 pb-20 flex items-center">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+        <div class="reveal">
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-2 text-sm font-semibold text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/50 dark:text-blue-300 mb-6 backdrop-blur-md">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span data-i18n="hero.badge">Disponible pour opportunités & recrutement</span>
+          </div>
+
+          <h1
+            class="max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <span data-i18n="hero.greeting">Bonjour, je suis</span> <span
+              class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">Gonçalvès
+              Cédrick</span>
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-xl font-bold leading-8 text-slate-700 dark:text-slate-300 min-h-[3rem]">
+            <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+          </p>
+
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 sm:text-lg"
+            data-i18n="hero.description">
+            Je conçois des applications web et mobiles modernes, fluides et performantes avec Laravel, Flutter, React,
+            Dart, MySQL & PostgreSQL, ainsi que l'intégration de CMS comme WordPress et Strapi.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projets" class="btn btn-primary">
+              <span data-i18n="hero.cta_projects">Voir mes projets</span>
+              <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-outline" data-i18n="hero.cta_contact">Me contacter</a>
+            <a href="assets/cv/CV_Goncalves_Cedrick.pdf" download
+              class="btn btn-dark dark:bg-slate-800 dark:hover:bg-slate-700">
+              <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              <span data-i18n="hero.cta_cv">CV PDF</span>
+            </a>
+          </div>
+
+          <!-- Social Links Quick Icons -->
+          <div class="mt-8 flex items-center gap-4 text-slate-500 dark:text-slate-400">
+            <span class="text-xs font-semibold uppercase tracking-wider" data-i18n="hero.networks">Réseaux :</span>
+            <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="GitHub">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                <path d="M9 18c-4.51 2-5-2-7-2" />
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="LinkedIn">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="mailto:goncalvescedrick32@gmail.com"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="Email">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal hero-visual">
+          <div class="profile-card relative group">
+            <div class="profile-frame">
+              <img src="assets/images/image.png" alt="Portrait de Gonçalvès Cédrick"
+                class="transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="profile-meta">
+              <span class="status-dot"></span>
+              <div>
+                <p class="text-sm font-bold text-white" data-i18n="hero.role">
+                  Développeur Web & Mobile Fullstack
+                </p>
+                <p class="text-xs text-blue-200">
+                  Laravel · Flutter · React · MySQL · WordPress · Strapi
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- À PROPOS SECTION -->
+    <section id="apropos"
+      class="section bg-white dark:bg-slate-900 border-y border-slate-200/60 dark:border-slate-800/60">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div class="reveal">
+            <p class="section-kicker" data-i18n="about.kicker">À propos de moi</p>
+            <h2 class="section-title" data-i18n="about.title">
+              Développeur rigoureux, autonome et axé sur la qualité logicielle.
+            </h2>
+          </div>
+          <div class="reveal" style="--delay: 100ms">
+            <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300" data-i18n="about.p1">
+              Passionné par la création de solutions digitales complètes, je développe des applications <strong>Web &
+                Mobiles</strong> performantes en combinant <strong>Laravel</strong>, <strong>React</strong> et
+              <strong>Flutter</strong>. Rigoureux et orienté pratique, j'apporte une attention particulière à
+              l'architecture logicielle, la modélisation de bases de données (UML/MCD) et l'intégration de
+              <strong>CMS</strong>
+              (WordPress, Strapi) pour répondre efficacement aux besoins métier.
+            </p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                </div>
+                <h3 data-i18n="about.card1.title">Web & Backend</h3>
+                <p data-i18n="about.card1.desc">Applications web (Laravel, PHP), APIs REST robustes et architecture
+                  MVC propre.
+                </p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                    <path d="M12 18h.01" />
+                  </svg>
+                </div>
+                <h3 data-i18n="about.card2.title">Mobile Cross-Platform</h3>
+                <p data-i18n="about.card2.desc">Applications mobiles réactives (Flutter/Dart) pour iOS & Android avec
+                  UI soignée.</p>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <line x1="3" x2="21" y1="9" y2="9" />
+                    <line x1="9" x2="9" y1="21" y2="9" />
+                  </svg>
+                </div>
+                <h3 data-i18n="about.card3.title">Frontend & CMS</h3>
+                <p data-i18n="about.card3.desc">Interfaces dynamiques avec React & Tailwind CSS, intégration WordPress
+                  et Strapi.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES SECTION -->
+    <section id="competences" class="section bg-slate-50 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker" data-i18n="skills.kicker">Compétences Techniques</p>
+          <h2 class="section-title" data-i18n="skills.title">
+            Un socle technique solide taillé pour le Web et le Mobile.
+          </h2>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <!-- Card 1: Web Backend -->
+          <article class="skill-card reveal">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="p-2.5 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="skills.card1.title">Backend
+                & APIs</h3>
+            </div>
+            <div class="badge-list">
+              <span>Laravel 11/12</span><span>PHP 8</span><span>APIs REST</span><span>Eloquent
+                ORM</span><span>Blade</span><span>Auth
+                & RBAC</span><span>Node.js</span>
+            </div>
+          </article>
+
+          <!-- Card 2: Mobile -->
+          <article class="skill-card reveal" style="--delay: 80ms">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="p-2.5 rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                  <path d="M12 18h.01" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="skills.card2.title">Mobile
+                & Cross-Platform</h3>
+            </div>
+            <div class="badge-list">
+              <span>Flutter</span><span>Dart</span><span>SQLite</span><span>Provider / BLoC</span><span
+                data-i18n="skills.responsive_ui">UI Responsive</span><span>Consommation APIs</span>
+            </div>
+          </article>
+
+          <!-- Card 3: Frontend & CMS -->
+          <article class="skill-card reveal" style="--delay: 160ms">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="p-2.5 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <line x1="3" x2="21" y1="9" y2="9" />
+                  <line x1="9" x2="9" y1="21" y2="9" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="skills.card3.title">Frontend
+                & CMS</h3>
+            </div>
+            <div class="badge-list">
+              <span>React</span><span>Tailwind CSS</span><span>JavaScript ES6+</span><span>Vite</span><span>WordPress
+                CMS</span><span>Strapi Headless CMS</span><span>Bootstrap</span>
+            </div>
+          </article>
+
+          <!-- Card 4: Architecture, BDD & Outils -->
+          <article class="skill-card reveal" style="--delay: 240ms">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="p-2.5 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3h7v7H3z" />
+                  <path d="M14 3h7v7h-7z" />
+                  <path d="M14 14h7v7h-7z" />
+                  <path d="M3 14h7v7H3z" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="skills.card4.title">
+                Architecture & Outils</h3>
+            </div>
+            <div class="badge-list">
+              <span data-i18n="skills.uml">Modélisation UML</span><span data-i18n="skills.db_modeling">Merise
+                MCD/MLD</span><span>MySQL</span><span>PostgreSQL</span><span>Git & GitHub Flow</span><span
+                data-i18n="skills.agile">Agile / Scrum</span><span>Docker</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS SECTION -->
+    <section id="projets"
+      class="section bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-3xl">
+            <p class="section-kicker" data-i18n="projects.kicker">Réalisations</p>
+            <h2 class="section-title" data-i18n="projects.title">
+              Mes Projets Web & Mobile
+            </h2>
+          </div>
+
+          <!-- Filter Buttons -->
+          <div id="project-filters" class="flex flex-wrap gap-2">
+            <button class="filter-btn active" data-filter="all" data-i18n="projects.filter.all">Tous</button>
+            <button class="filter-btn" data-filter="backend" data-i18n="projects.filter.backend">Laravel / PHP</button>
+            <button class="filter-btn" data-filter="frontend" data-i18n="projects.filter.frontend">React /
+              Frontend</button>
+            <button class="filter-btn" data-filter="mobile" data-i18n="projects.filter.mobile">Mobile (Flutter)</button>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="projects-grid">
+
+          <!-- Projet 1: Clinique -->
+          <article class="project-card reveal" data-category="backend" data-title-fr="Clinique - Gestion Médicale"
+            data-title-en="Clinique - Medical Management" data-img="assets/projects/clinique1.png"
+            data-desc-fr="Application web complète de gestion d'une clinique médicale développée avec PHP, MySQL et Bootstrap. Elle permet la gestion des rendez-vous, le suivi des dossiers patients et l'attribution de rôles sécurisés."
+            data-desc-en="Complete medical clinic management web application developed with PHP, MySQL, and Bootstrap. It enables appointment scheduling, patient record tracking, and secure role allocation."
+            data-tech="PHP, MySQL, Bootstrap, JavaScript" data-demo="#"
+            data-code="https://github.com/Goncalvescedrick/gestion_clinique">
+            <div class="relative overflow-hidden group">
+              <img src="assets/projects/clinique1.png" alt="Capture du projet Clinique Pro"
+                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Agrandir">
+                  <span data-i18n="projects.view_details">🔎 Voir les détails</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-label" data-i18n="project1.label">Application Web PHP & MySQL</p>
+              <h3 data-i18n="project1.title">Clinique - Gestion Médicale</h3>
+              <p data-i18n="project1.desc">
+                Plateforme web de gestion des dossiers patients, des rendez-vous médicaux et des accès
+                multi-utilisateurs.
+              </p>
+              <div class="tech-list">
+                <span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span>
+              </div>
+              <ul>
+                <li data-i18n="project1.bullet1">Authentification sécurisée & gestion des rôles (RBAC).</li>
+                <li data-i18n="project1.bullet2">Interface responsive pour la prise de rendez-vous.</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn-open-modal btn-action-modal" data-i18n="projects.details">Détails du projet</button>
+                <a href="#" target="_blank" rel="noopener"
+                  class="btn-action-demo btn-outline bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  aria-label="Voir la démo" data-i18n="projects.demo">Démo</a>
+
+                <a href="https://github.com/Goncalvescedrick/gestion_clinique" target="_blank" rel="noopener"
+                  class="btn-action-code" aria-label="Voir le code" data-i18n="projects.code">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 2: BCLCC -->
+          <article class="project-card reveal" style="--delay: 100ms" data-category="backend"
+            data-title-fr="Gestion des Dossiers BCLCC" data-title-en="BCLCC Case Management App"
+            data-img="assets/projects/bclcc.png"
+            data-desc-fr="Application web de gestion centralisée des dossiers et des plaintes pour la Brigade Centrale de Lutte Contre la Cybercriminalité (BCLCC). Développée avec Laravel et MySQL."
+            data-desc-en="Centralized case and complaints management web application for the Central Cybercrime Brigade (BCLCC). Developed with Laravel and MySQL."
+            data-tech="Laravel, PHP 8, MySQL, Blade, Tailwind CSS, Alpine.js" data-demo="#"
+            data-code="https://github.com/Goncalvescedrick/Final/tree/main/gestion-dossiers-at">
+            <div class="relative overflow-hidden group">
+              <img src="assets/projects/bclcc.png" alt="Capture du projet BCLCC"
+                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Agrandir">
+                  <span data-i18n="projects.view_details">🔎 Voir les détails</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-label" data-i18n="project2.label">Application Laravel & BDD</p>
+              <h3 data-i18n="project2.title">Gestion des Dossiers BCLCC</h3>
+              <p data-i18n="project2.desc">
+                Application web métier de gestion centralisée des dossiers et du suivi des plaintes.
+              </p>
+              <div class="tech-list">
+                <span>Laravel</span><span>MySQL</span><span>Blade</span><span>Tailwind CSS</span><span>Alpine.js</span>
+              </div>
+              <ul>
+                <li data-i18n="project2.bullet1">Suivi des dossiers & statistiques analytiques.</li>
+                <li data-i18n="project2.bullet2">Structure orientée objet et requêtes SQL optimisées.</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn-open-modal btn-action-modal" data-i18n="projects.details">Détails du projet</button>
+                <a href="#" target="_blank" rel="noopener"
+                  class="btn-action-demo btn-outline bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  aria-label="Voir la démo" data-i18n="projects.demo">Démo</a>
+
+                <a href="https://github.com/Goncalvescedrick/Final/tree/main/gestion-dossiers-at" target="_blank"
+                  rel="noopener" class="btn-action-code" aria-label="Voir le code" data-i18n="projects.code">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 3: Clever-Group -->
+          <article class="project-card reveal" style="--delay: 150ms" data-category="frontend"
+            data-title-fr="Site Web Clever-Group" data-title-en="Clever-Group Website"
+            data-img="assets/projects/clever.png"
+            data-desc-fr="Site web vitrine moderne et dynamique développé pour Clever-Group, une entreprise évoluant dans les services digitaux."
+            data-desc-en="Modern and dynamic showcase website developed for Clever-Group, a company operating in digital services."
+            data-tech="React, JavaScript, Tailwind CSS, Vite" data-demo="https://site-clever-group.vercel.app/"
+            data-code="https://github.com/Goncalvescedrick/clever-group">
+            <div class="relative overflow-hidden group">
+              <img src="assets/projects/clever.png" alt="Capture du projet Clever-Group"
+                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Agrandir">
+                  <span data-i18n="projects.view_details">🔎 Voir les détails</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-label" data-i18n="project3.label">Application Web React & Vite</p>
+              <h3 data-i18n="project3.title">Clever-Group</h3>
+              <p data-i18n="project3.desc">
+                Site web vitrine interactif et moderne pour l'entreprise Clever-Group.
+              </p>
+              <div class="tech-list">
+                <span>React</span><span>JavaScript</span><span>Tailwind CSS</span><span>Vite</span>
+              </div>
+              <ul>
+                <li data-i18n="project3.bullet1">Site web responsive & animations fluides.</li>
+                <li data-i18n="project3.bullet2">Design moderne et composants réutilisables.</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn-open-modal btn-action-modal" data-i18n="projects.details">Détails du projet</button>
+                <a href="https://site-clever-group.vercel.app/" target="_blank" rel="noopener"
+                  class="btn-action-demo btn-outline bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  aria-label="Voir la démo" data-i18n="projects.demo">Démo</a>
+
+                <a href="https://github.com/Goncalvescedrick/clever-group" target="_blank" rel="noopener"
+                  class="btn-action-code" aria-label="Voir le code" data-i18n="projects.code">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 4: ACE Tech -->
+          <article class="project-card reveal" style="--delay: 200ms" data-category="frontend"
+            data-title-fr="Site Web ACE Tech" data-title-en="ACE Tech Website" data-img="assets/projects/ace.png"
+            data-desc-fr="Plateforme web vitrine développée pour ACE Tech, entreprise spécialisée dans les technologies et services informatiques."
+            data-desc-en="Showcase web platform developed for ACE Tech, a company specialized in IT services and technologies."
+            data-tech="React, JavaScript, Tailwind CSS, Vite" data-demo="https://goncalvescedrick.github.io/Site-Ace/"
+            data-code="https://github.com/Goncalvescedrick/Site-Ace">
+            <div class="relative overflow-hidden group">
+              <img src="assets/projects/ace.png" alt="Capture du projet ACE Tech"
+                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Agrandir">
+                  <span data-i18n="projects.view_details">🔎 Voir les détails</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-label" data-i18n="project4.label">Frontend React & Tailwind CSS</p>
+              <h3 data-i18n="project4.title">ACE Tech</h3>
+              <p data-i18n="project4.desc">
+                Site web entreprise pour ACE Tech, valorisant l'offre de services informatiques.
+              </p>
+              <div class="tech-list">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+              <ul>
+                <li data-i18n="project4.bullet1">Interface moderne, épurée et responsive.</li>
+                <li data-i18n="project4.bullet2">Optimisation des performances avec Vite.</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn-open-modal btn-action-modal" data-i18n="projects.details">Détails du projet</button>
+                <a href="https://goncalvescedrick.github.io/Site-Ace/" target="_blank" rel="noopener"
+                  class="btn-action-demo btn-outline bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  aria-label="Voir la démo" data-i18n="projects.demo">Démo</a>
+
+                <a href="https://github.com/Goncalvescedrick/Site-Ace" target="_blank" rel="noopener"
+                  class="btn-action-code" aria-label="Voir le code" data-i18n="projects.code">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 5: PulseMobile (Flutter) -->
+          <article class="project-card reveal" style="--delay: 250ms" data-category="mobile"
+            data-title-fr="PulseMobile - Application Flutter" data-title-en="PulseMobile - Flutter App"
+            data-img="assets/projects/mobile.png"
+            data-desc-fr="Application mobile multiplateforme développée avec Flutter & Dart, connectée à une API REST headless (Strapi / Laravel). Intègre la gestion des dépenses, la synchronisation des données et une UI réactive."
+            data-desc-en="Cross-platform mobile application developed with Flutter & Dart, connected to a headless REST API (Strapi / Laravel). Features expense tracking, data sync, and reactive UI."
+            data-tech="Flutter, Dart, REST API, Strapi CMS, SQLite, Provider" data-demo="#"
+            data-code="https://github.com/Goncalvescedrick/mobile">
+            <div class="relative overflow-hidden group">
+              <img src="assets/projects/mobile.png" alt="Capture du projet Application Mobile"
+                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Agrandir">
+                  <span data-i18n="projects.view_details">🔎 Voir les détails</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-label" data-i18n="project5.label">Application Mobile Flutter & API</p>
+              <h3 data-i18n="project5.title">PulseMobile - Application Mobile</h3>
+              <p data-i18n="project5.desc">
+                Application mobile cross-platform avec gestion d'état, stockage local et consommation d’API REST.
+              </p>
+              <div class="tech-list">
+                <span>Flutter</span><span>Dart</span><span>REST API</span><span>Strapi CMS</span>
+              </div>
+              <ul>
+                <li data-i18n="project5.bullet1">Interface moderne et fluide pour iOS & Android.</li>
+                <li data-i18n="project5.bullet2">Architecture propre et consommation d'APIs REST.</li>
+              </ul>
+              <div class="project-actions">
+                <button class="btn-open-modal btn-action-modal" data-i18n="projects.details">Détails du projet</button>
+                <a href="#" target="_blank" rel="noopener"
+                  class="btn-action-demo btn-outline bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                  aria-label="Voir la démo" data-i18n="projects.demo">Démo</a>
+
+                <a href="https://github.com/Goncalvescedrick/mobile" target="_blank" rel="noopener"
+                  class="btn-action-code" aria-label="Voir le code" data-i18n="projects.code">Code</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPÉRIENCES SECTION -->
+    <section id="experiences" class="section bg-slate-900 text-white relative overflow-hidden">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8 relative z-10">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker text-blue-400" data-i18n="experiences.kicker">Parcours & Formation</p>
+          <h2 class="section-title text-white" data-i18n="experiences.title">
+            Une progression axée sur le développement logiciel et la pratique.
+          </h2>
+        </div>
+
+        <div class="timeline mt-12">
+          <article class="timeline-item reveal">
+            <span></span>
+            <div>
+              <p class="text-blue-400" data-i18n="experiences.item1.date">En cours</p>
+              <h3 data-i18n="experiences.item1.title">Études en Informatique & Génie Logiciel</h3>
+              <small class="text-slate-300" data-i18n="experiences.item1.desc">
+                Formation approfondie en développement Web & Mobile, modélisation des architectures logicielles (UML,
+                MCD)
+                et bases de données.
+              </small>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal" style="--delay: 100ms">
+            <span></span>
+            <div>
+              <p class="text-blue-400" data-i18n="experiences.item2.date">Projets Fullstack & Mobiles</p>
+              <h3 data-i18n="experiences.item2.title">Conception d'Applications Web & Mobiles</h3>
+              <small class="text-slate-300" data-i18n="experiences.item2.desc">
+                Développement d'applications complètes avec Laravel, React et Flutter, conception d'APIs REST et
+                modélisation relationnelle.
+              </small>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal" style="--delay: 200ms">
+            <span></span>
+            <div>
+              <p class="text-blue-400" data-i18n="experiences.item3.date">CMS & Projets Pro</p>
+              <h3 data-i18n="experiences.item3.title">Intégration CMS & Déploiement</h3>
+              <small class="text-slate-300" data-i18n="experiences.item3.desc">
+                Déploiement de solutions sur mesure avec WordPress et Strapi, gestion de versions Git et méthodologies
+                agiles.
+              </small>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section bg-slate-50 dark:bg-slate-950">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div class="reveal">
+          <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+          <h2 class="section-title" data-i18n="contact.title">
+            Discutons d’une opportunité ou d’un projet.
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400" data-i18n="contact.desc">
+            Je suis disponible pour rejoindre votre équipe et contribuer activement à vos projets Web & Mobile.
+            Contactez-moi par formulaire ou par email !
+          </p>
+
+          <div class="contact-list mt-8">
+            <a href="mailto:goncalvescedrick32@gmail.com" class="group">
+              <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </span>
+                <strong>Email</strong>
+              </div>
+              <span class="text-slate-500 dark:text-slate-400 text-sm">goncalvescedrick32@gmail.com</span>
+            </a>
+
+            <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener" class="group">
+              <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                </span>
+                <strong>GitHub</strong>
+              </div>
+              <span class="text-slate-500 dark:text-slate-400 text-sm">github.com/Goncalvescedrick</span>
+            </a>
+
+            <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+              class="group">
+              <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </span>
+                <strong>LinkedIn</strong>
+              </div>
+              <span class="text-slate-500 dark:text-slate-400 text-sm">Cédrick Gonçalvès</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <form id="contact-form" class="contact-form reveal" style="--delay: 120ms">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="flex flex-col gap-1">
+                <span data-i18n="contact.form.name">Nom & Prénom</span>
+                <input type="text" name="name" placeholder="Votre nom"
+                  data-i18n-placeholder="contact.form.name_placeholder" required />
+              </label>
+              <label class="flex flex-col gap-1">
+                <span data-i18n="contact.form.email">Email</span>
+                <input type="email" name="email" placeholder="votre@email.com"
+                  data-i18n-placeholder="contact.form.email_placeholder" required />
+              </label>
+            </div>
+            <label class="flex flex-col gap-1">
+              <span data-i18n="contact.form.subject">Sujet</span>
+              <input type="text" name="subject" placeholder="Opportunité de recrutement / projet"
+                data-i18n-placeholder="contact.form.subject_placeholder" required />
+            </label>
+            <label class="flex flex-col gap-1">
+              <span data-i18n="contact.form.message">Message</span>
+              <textarea name="message" rows="5" placeholder="Décrivez votre proposition..."
+                data-i18n-placeholder="contact.form.message_placeholder" required></textarea>
+            </label>
+
+            <!-- Feedback Alert Box -->
+            <div id="form-feedback" class="hidden p-4 rounded-lg text-sm font-medium"></div>
+
+            <button class="btn btn-primary w-full justify-center text-base py-3" type="submit">
+              <span data-i18n="contact.form.submit">Envoyer le message</span>
+              <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE DÉTAIL PROJET -->
+  <div id="project-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+    aria-hidden="true">
+    <div
+      class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl transition-transform duration-300 scale-95 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+      id="modal-container">
+
+      <button id="modal-close"
+        class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 transition"
+        aria-label="Fermer la modale">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+
+      <div id="modal-content" class="space-y-6">
+        <!-- Filled dynamically by JS -->
+        <img id="modal-img"
+          class="w-full aspect-video object-cover rounded-xl border border-slate-200 dark:border-slate-800" src=""
+          alt="" />
+        <div>
+          <span id="modal-tech-badge"
+            class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 mb-2"></span>
+          <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
+          <p id="modal-desc" class="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <div class="border-t border-slate-200 dark:border-slate-800 pt-4">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-2" data-i18n="modal.key_tech">
+            Technologies clés :</h4>
+          <div id="modal-tech-list" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a id="modal-demo-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+            <span data-i18n="modal.demo">Voir la Démo</span>
+            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" x2="21" y1="14" y2="3" />
+            </svg>
+          </a>
+          <a id="modal-code-btn" href="#" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+            <span data-i18n="modal.code">Code Source</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 border-t border-slate-800 px-5 py-8 text-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p class="text-slate-400" data-i18n="footer.copy">© 2026 Gonçalvès Cédrick. Tous droits réservés.</p>
+      <div class="flex gap-6 text-slate-300">
+        <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener"
+          class="hover:text-blue-400 transition">GitHub</a>
+        <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+          class="hover:text-blue-400 transition">LinkedIn</a>
+        <a href="mailto:goncalvescedrick32@gmail.com" class="hover:text-blue-400 transition">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+    class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg opacity-0 pointer-events-none"
+    aria-label="Retour en haut / Back to top">
+    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+      stroke-width="3">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
