@@ -49,8 +49,10 @@ Le projet ne nécessitant aucune étape de compilation complexe, vous pouvez le 
 ## 📬 Contact
 
 Vous pouvez me retrouver et me contacter via :
+- **Localisation** : Ouagadougou, Burkina Faso
+- **Téléphone / WhatsApp** : +226 06 19 68 35 / 58 73 81 46
 - **Email** : goncalvescedrick32@gmail.com
-- **LinkedIn** : [Cédrick Gonçalvès](https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès)
+- **LinkedIn** : [goncalvescedrick](https://www.linkedin.com/in/goncalvescedrick)
 - **GitHub** : [Goncalvescedrick](https://github.com/Goncalvescedrick)
 
 ---

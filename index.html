@@ -140,6 +140,16 @@
       <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
       <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
     </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </symbol>
   </svg>
 
   <!-- Scroll Progress Bar -->
@@ -287,13 +297,17 @@
               class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="GitHub">
               <svg class="w-5 h-5"><use href="#icon-github" /></svg>
             </a>
-            <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+            <a href="https://www.linkedin.com/in/goncalvescedrick" target="_blank" rel="noopener"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="LinkedIn">
               <svg class="w-5 h-5"><use href="#icon-linkedin" /></svg>
             </a>
             <a href="mailto:goncalvescedrick32@gmail.com"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="Email">
               <svg class="w-5 h-5"><use href="#icon-mail" /></svg>
+            </a>
+            <a href="tel:+22606196835"
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="Téléphone">
+              <svg class="w-5 h-5"><use href="#icon-phone" /></svg>
             </a>
           </div>
         </div>
@@ -350,10 +364,10 @@
 
           <!-- ─── Projet 1: BCLCC (star project) ─── -->
           <article class="project-card project-card--featured reveal" data-category="backend"
-            data-title-fr="Gestion des Dossiers — BCLCC" data-title-en="Case Management — BCLCC"
+            data-title-fr="Gestion des Dossiers & Plaintes — BCLCC" data-title-en="Case & Complaints Management — BCLCC"
             data-img="assets/projects/bclcc.png"
-            data-desc-fr="Application web métier de gestion centralisée des dossiers et du suivi des plaintes pour la Brigade Centrale de Lutte Contre la Cybercriminalité (BCLCC). Conception d'une architecture sécurisée avec rôles hiérarchiques, traçabilité complète des actions et requêtes SQL optimisées pour le traitement de milliers de dossiers."
-            data-desc-en="Centralized case and complaint management web application for the Central Cybercrime Investigation Brigade (BCLCC). Designed with a secure role-based architecture, full action traceability, and optimized SQL queries for processing thousands of case files."
+            data-desc-fr="Application web métier conçue lors de mon stage à la Brigade Centrale de Lutte Contre la Cybercriminalité (BCLCC). Gestion centralisée des dossiers, plaintes, courriers officiels, scellés et assistance technique. Mise en œuvre d'une architecture sécurisée avec rôles/permissions (RBAC), journal d'audit et modélisation de données optimisée."
+            data-desc-en="Mission-critical web application designed during my internship at the Central Cybercrime Investigation Brigade (BCLCC). Centralized tracking of case files, complaints, official mail, evidence seals, and technical assistance. Implemented a secure RBAC architecture, audit logs, and optimized database modeling."
             data-tech="Laravel, PHP 8, MySQL, Blade, Tailwind CSS, Alpine.js"
             data-code="https://github.com/Goncalvescedrick/Final/tree/main/gestion-dossiers-at">
             <div class="relative overflow-hidden group">
@@ -375,20 +389,19 @@
               </div>
             </div>
             <div class="project-content">
-              <p class="project-label" data-i18n="project1.label">Application métier Laravel</p>
-              <h3 data-i18n="project1.title">Gestion des Dossiers — BCLCC</h3>
+              <p class="project-label" data-i18n="project1.label">Application métier Laravel — Stage BCLCC</p>
+              <h3 data-i18n="project1.title">Gestion des Dossiers & Plaintes — BCLCC</h3>
               <p class="project-context" data-i18n="project1.context">
-                Plateforme sécurisée pour la Brigade de lutte contre la cybercriminalité : suivi des plaintes,
-                gestion des dossiers sensibles et traçabilité complète.
+                Plateforme sécurisée pour la Brigade de lutte contre la cybercriminalité : suivi des plaintes, courriers, scellés, assistance technique et traçabilité d'audit.
               </p>
               <div class="project-highlights">
                 <div class="highlight-item">
                   <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"><use href="#icon-shield" /></svg>
-                  <span data-i18n="project1.highlight1">Architecture RBAC sécurisée à rôles hiérarchiques</span>
+                  <span data-i18n="project1.highlight1">Sécurité RBAC, journal d'audit & traçabilité complète</span>
                 </div>
                 <div class="highlight-item">
                   <svg class="w-4 h-4 text-blue-500 shrink-0 mt-0.5"><use href="#icon-database" /></svg>
-                  <span data-i18n="project1.highlight2">Requêtes SQL optimisées & statistiques analytiques</span>
+                  <span data-i18n="project1.highlight2">Gestion des dossiers, plaintes, courriers & scellés</span>
                 </div>
               </div>
               <div class="tech-list">
@@ -658,19 +671,17 @@
             </div>
           </article>
 
-          <!-- Card 4: Architecture & Outils -->
+          <!-- Card 4: Systèmes, BDD & Outils -->
           <article class="skill-card reveal" style="--delay: 240ms">
             <div class="flex items-center gap-3 mb-4">
               <span class="p-2.5 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
                 <svg class="w-6 h-6"><use href="#icon-grid" /></svg>
               </span>
               <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="skills.card4.title">
-                Architecture & Outils</h3>
+                Systèmes, BDD & Outils</h3>
             </div>
             <div class="badge-list">
-              <span data-i18n="skills.uml">Modélisation UML</span><span data-i18n="skills.db_modeling">Merise
-                MCD/MLD</span><span>MySQL</span><span>PostgreSQL</span><span>Git & GitHub
-                Flow</span><span data-i18n="skills.agile">Agile / Scrum</span><span>Docker</span>
+              <span class="badge-primary" data-i18n="skills.systems">Réseaux & Systèmes</span><span class="badge-primary">PostgreSQL</span><span class="badge-primary">MySQL</span><span data-i18n="skills.db_modeling">Modélisation BDD (Merise/UML)</span><span>Algorithmique</span><span>Git & GitHub</span><span data-i18n="skills.maintenance">Maintenance & Diagnostic</span><span data-i18n="skills.security">Sécurité & Audit</span>
             </div>
           </article>
         </div>
@@ -678,52 +689,50 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════════════════
-         PARCOURS SECTION — Timeline avec repères concrets
+         PARCOURS SECTION — Timeline avec repères réels du CV
          ════════════════════════════════════════════════════════════════ -->
     <section id="parcours" class="section bg-slate-900 text-white relative overflow-hidden">
       <div class="mx-auto max-w-7xl px-5 lg:px-8 relative z-10">
         <div class="reveal max-w-3xl">
           <p class="section-kicker text-blue-400" data-i18n="parcours.kicker">Parcours & Formation</p>
           <h2 class="section-title text-white" data-i18n="parcours.title">
-            Une progression axée sur la pratique et le développement logiciel.
+            Une progression alliant développement logiciel, réseaux et systèmes.
           </h2>
         </div>
 
         <div class="timeline mt-12">
+          <!-- Item 1 : Stage BCLCC -->
           <article class="timeline-item reveal">
             <span></span>
             <div>
-              <p class="text-blue-400" data-i18n="parcours.item1.date">En cours</p>
-              <h3 data-i18n="parcours.item1.title">Études en Informatique & Génie Logiciel</h3>
+              <p class="text-blue-400" data-i18n="parcours.item1.date">27 Fév. 2026 – 27 Mai 2026</p>
+              <h3 data-i18n="parcours.item1.title">Stage Développeur Web & Support — BCLCC</h3>
               <small class="text-slate-300" data-i18n="parcours.item1.desc">
-                Formation approfondie en développement Web & Mobile, architecture logicielle (UML, Merise),
-                modélisation de bases de données et méthodologies agiles.
+                Brigade Centrale de Lutte Contre la Cybercriminalité. Conception et développement d'une application web Laravel de gestion des dossiers, plaintes, courriers, scellés et assistance technique. Sécurité RBAC, audit et diagnostic matériel/logiciel.
               </small>
             </div>
           </article>
 
+          <!-- Item 2 : Licence RSI -->
           <article class="timeline-item reveal" style="--delay: 100ms">
             <span></span>
             <div>
-              <p class="text-blue-400" data-i18n="parcours.item2.date">Projet BCLCC</p>
-              <h3 data-i18n="parcours.item2.title">Plateforme de gestion — Brigade Cybercriminalité</h3>
+              <p class="text-blue-400" data-i18n="parcours.item2.date">2023 – 2026</p>
+              <h3 data-i18n="parcours.item2.title">Licence en Réseaux et Systèmes Informatiques (RSI)</h3>
               <small class="text-slate-300" data-i18n="parcours.item2.desc">
-                Conception et développement d'une application Laravel de gestion des dossiers
-                pour la Brigade Centrale de Lutte Contre la Cybercriminalité. Architecture sécurisée,
-                RBAC, traçabilité et requêtes SQL optimisées.
+                Institut Supérieur de Technologies (IST), Ouagadougou. Cursus axé sur l'architecture réseaux, systèmes d'exploitation, modélisation de bases de données relationnelles, algorithmique et ingénierie logicielle.
               </small>
             </div>
           </article>
 
+          <!-- Item 3 : Baccalauréat Scientifique -->
           <article class="timeline-item reveal" style="--delay: 200ms">
             <span></span>
             <div>
-              <p class="text-blue-400" data-i18n="parcours.item3.date">Projets Fullstack & Mobile</p>
-              <h3 data-i18n="parcours.item3.title">Applications Web & Mobiles complètes</h3>
+              <p class="text-blue-400" data-i18n="parcours.item3.date">2022 – 2023</p>
+              <h3 data-i18n="parcours.item3.title">Baccalauréat Scientifique</h3>
               <small class="text-slate-300" data-i18n="parcours.item3.desc">
-                Développement de 5+ projets avec Laravel, React et Flutter. Conception d'APIs REST,
-                intégration de CMS (WordPress, Strapi), déploiement sur Vercel et GitHub Pages,
-                gestion de versions Git et workflows agiles.
+                Complexe Scolaire les Elites, Ouagadougou. Formation scientifique approfondie, rigueur analytique, logique mathématique et esprit de synthèse.
               </small>
             </div>
           </article>
@@ -758,6 +767,28 @@
               <span class="text-slate-500 dark:text-slate-400 text-sm">goncalvescedrick32@gmail.com</span>
             </a>
 
+            <a href="tel:+22606196835" class="group">
+              <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5"><use href="#icon-phone" /></svg>
+                </span>
+                <strong data-i18n="contact.phone_label">Téléphone / WhatsApp</strong>
+              </div>
+              <span class="text-slate-500 dark:text-slate-400 text-sm">+226 06 19 68 35 / 58 73 81 46</span>
+            </a>
+
+            <div class="group flex items-center justify-between py-3 border-b border-slate-200/60 dark:border-slate-800/60">
+              <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400">
+                  <svg class="w-5 h-5"><use href="#icon-map-pin" /></svg>
+                </span>
+                <strong data-i18n="contact.location_label">Localisation</strong>
+              </div>
+              <span class="text-slate-500 dark:text-slate-400 text-sm" data-i18n="contact.location_value">Ouagadougou, Burkina Faso</span>
+            </div>
+
             <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener" class="group">
               <div class="flex items-center gap-3">
                 <span
@@ -769,7 +800,7 @@
               <span class="text-slate-500 dark:text-slate-400 text-sm">github.com/Goncalvescedrick</span>
             </a>
 
-            <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+            <a href="https://www.linkedin.com/in/goncalvescedrick" target="_blank" rel="noopener"
               class="group">
               <div class="flex items-center gap-3">
                 <span
@@ -778,7 +809,7 @@
                 </span>
                 <strong>LinkedIn</strong>
               </div>
-              <span class="text-slate-500 dark:text-slate-400 text-sm">Cédrick Gonçalvès</span>
+              <span class="text-slate-500 dark:text-slate-400 text-sm">goncalvescedrick</span>
             </a>
           </div>
         </div>
@@ -878,7 +909,7 @@
       <div class="flex gap-6 text-slate-300">
         <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener"
           class="hover:text-blue-400 transition">GitHub</a>
-        <a href="https://linkedin.com/in/cédrick-fredson-gérard-gonçalvès" target="_blank" rel="noopener"
+        <a href="https://www.linkedin.com/in/goncalvescedrick" target="_blank" rel="noopener"
           class="hover:text-blue-400 transition">LinkedIn</a>
         <a href="mailto:goncalvescedrick32@gmail.com" class="hover:text-blue-400 transition">Email</a>
       </div>
