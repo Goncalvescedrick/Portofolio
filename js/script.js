@@ -106,6 +106,21 @@ const translations = {
     "project5.context": "Application mobile cross-platform avec gestion d'état, stockage local et consommation d'API REST.",
     "project5.highlight1": "UI moderne et fluide pour iOS & Android",
     "project5.highlight2": "Architecture propre & consommation d'APIs REST",
+    "project6.label": "Fintech / Microfinance — Scoring WORM (Zone UEMOA)",
+    "project6.title": "DigiScore Coop 360",
+    "project6.context": "Plateforme souveraine d'aide à la décision microcrédit : scoring multidimensionnel, coffre-fort WORM sous PostgreSQL et détection anti-fraude.",
+    "project6.highlight1": "Coffre-fort WORM scellé (SHA-256) & triggers anti-altération",
+    "project6.highlight2": "Simulateur What-If en RAM (Goal Seek) & cash-flow Mobile Money",
+    "project7.label": "SaaS Multi-Tenant Laravel 12 — Ateliers & SAV (FCFA)",
+    "project7.title": "RepairOS",
+    "project7.context": "Solution SaaS de gestion d'ateliers : cycle de réparation complet (machine à 9 états), facturation XOF, suivi public par token et alertes WhatsApp.",
+    "project7.highlight1": "Machine à 9 états stricts, bons de dépôt & facturation immuable",
+    "project7.highlight2": "Suivi public chiffré par token (/suivi/{token}) & WhatsApp en 1 clic",
+    "project8.label": "App Mobile Flutter & API Laravel 12 — C2C/B2C",
+    "project8.title": "Y'aquoi (Burkina)",
+    "project8.context": "Marketplace burkinabè sécurisée : paiement sous séquestre, contrôle au déballage 15 min, adresses par repères locaux sur 13 régions et Mobile Money.",
+    "project8.highlight1": "Séquestre garanti, déballage 15 min & panier mono-vendeur",
+    "project8.highlight2": "Adresses hybrides (13 régions), chat direct P2P & Mobile Money",
     "parcours.kicker": "Parcours & Formation",
     "parcours.title": "Une progression alliant développement logiciel, réseaux et systèmes.",
     "parcours.item1.date": "27 Fév. 2026 – 27 Mai 2026",
@@ -219,6 +234,21 @@ const translations = {
     "project5.context": "Cross-platform mobile app with state management, local storage, and REST API consumption.",
     "project5.highlight1": "Modern and fluid UI for iOS & Android",
     "project5.highlight2": "Clean architecture & REST API consumption",
+    "project6.label": "Fintech / Microfinance — WORM Prudential Scoring (WAEMU)",
+    "project6.title": "DigiScore Coop 360",
+    "project6.context": "Sovereign microcredit decision-support platform: multidimensional scoring, PostgreSQL WORM vault, and anti-fraud detection.",
+    "project6.highlight1": "Sealed WORM audit vault (SHA-256) & anti-tampering triggers",
+    "project6.highlight2": "In-memory What-If simulator (Goal Seek) & Mobile Money analytics",
+    "project7.label": "Multi-Tenant Laravel 12 SaaS — Workshops & SAV (FCFA)",
+    "project7.title": "RepairOS",
+    "project7.context": "SaaS management for technical workshops: 9-state machine, XOF invoicing, token-based public tracking, and WhatsApp alerts.",
+    "project7.highlight1": "Strict 9-state machine, printable receipts & immutable invoicing",
+    "project7.highlight2": "Encrypted public tracking (/suivi/{token}) & 1-tap WhatsApp alerts",
+    "project8.label": "Flutter Mobile App & Laravel 12 API — C2C / B2C",
+    "project8.title": "Y'aquoi (Burkina)",
+    "project8.context": "Secure Burkinabe marketplace: escrow payment, 15-min unboxing timer, local landmark addressing (13 regions), and Mobile Money.",
+    "project8.highlight1": "Guaranteed escrow, 15-min unboxing timer & single-seller cart",
+    "project8.highlight2": "Hybrid addresses (13 regions), P2P live chat & Mobile Money",
     "parcours.kicker": "Path & Education",
     "parcours.title": "A career combining software engineering, networking, and systems.",
     "parcours.item1.date": "Feb 27, 2026 – May 27, 2026",
@@ -969,7 +999,10 @@ function executeCommand(rawCommand) {
     <span class="text-emerald-400 font-bold">help</span><span>${isFr ? "Affiche cette aide" : "Display this help list"}</span>
     <span class="text-emerald-400 font-bold">about / whoami</span><span>${isFr ? "Profil & présentation de Cédrick" : "Profile & bio of Cédrick"}</span>
     <span class="text-emerald-400 font-bold">skills / stack</span><span>${isFr ? "Stack technique (Laravel, Flutter, React, Réseaux)" : "Tech stack details"}</span>
-    <span class="text-emerald-400 font-bold">projects / ls</span><span>${isFr ? "Liste des projets réalisés" : "List of featured projects"}</span>
+    <span class="text-emerald-400 font-bold">projects / ls</span><span>${isFr ? "Liste des projets réalisés (8 projets)" : "List of featured projects (8 projects)"}</span>
+    <span class="text-emerald-400 font-bold">digiscore</span><span>${isFr ? "DigiScore : Scoring prudentiel WORM microfinance (UEMOA)" : "DigiScore: WORM prudential microcredit scoring"}</span>
+    <span class="text-emerald-400 font-bold">repairos</span><span>${isFr ? "RepairOS : SaaS multi-tenant ateliers (Burkina/XOF)" : "RepairOS: Workshop management multi-tenant SaaS"}</span>
+    <span class="text-emerald-400 font-bold">yaquoi</span><span>${isFr ? "Y'aquoi : Marketplace burkinabè (Flutter & Séquestre)" : "Y'aquoi: Sovereign Burkinabe marketplace app"}</span>
     <span class="text-emerald-400 font-bold">bclcc</span><span>${isFr ? "Spécial BCLCC : Sécurité RBAC & audit trails" : "BCLCC security & audit highlights"}</span>
     <span class="text-emerald-400 font-bold">contact</span><span>${isFr ? "Coordonnées (WhatsApp, Email, GitHub, LinkedIn)" : "Contact details"}</span>
     <span class="text-emerald-400 font-bold">cv / download-cv</span><span>${isFr ? "Ouvre le CV (PDF)" : "Open resume (PDF)"}</span>
@@ -1015,21 +1048,84 @@ function executeCommand(rawCommand) {
     <span class="text-blue-400">[Phare]</span>
   </div>
   <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-    <span class="text-emerald-400 font-bold">2. Clinique</span>
+    <span class="text-emerald-400 font-bold">2. DigiScore Coop 360</span>
+    <span class="text-slate-300">${isFr ? "Scoring prudentiel WORM microfinance UEMOA (Laravel 12, Livewire, PostgreSQL)" : "WORM microcredit scoring platform (Laravel 12, Livewire, PostgreSQL)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">3. RepairOS</span>
+    <span class="text-slate-300">${isFr ? "SaaS multi-tenant de gestion d'ateliers (Laravel 12, MySQL, WhatsApp)" : "Repair workshop management SaaS (Laravel 12, MySQL, WhatsApp)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">4. Y'aquoi (Burkina)</span>
+    <span class="text-slate-300">${isFr ? "Marketplace souveraine C2C/B2C (Flutter, Clean Arch, Laravel 12 API)" : "Sovereign e-commerce marketplace (Flutter, Clean Arch, Laravel 12 API)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">5. Clinique</span>
     <span class="text-slate-300">${isFr ? "Plateforme médicale de dossiers patients (PHP, MySQL)" : "Medical clinic management (PHP, MySQL)"}</span>
   </div>
   <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-    <span class="text-emerald-400 font-bold">3. Clever-Group</span>
+    <span class="text-emerald-400 font-bold">6. Clever-Group</span>
     <span class="text-slate-300">${isFr ? "Site vitrine digital interactif (React, Vite, Tailwind)" : "Modern digital showcase (React, Vite, Tailwind)"}</span>
   </div>
   <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-    <span class="text-emerald-400 font-bold">4. ACE Tech</span>
+    <span class="text-emerald-400 font-bold">7. ACE Tech</span>
     <span class="text-slate-300">${isFr ? "Site entreprise services informatiques (HTML5, CSS3, JS)" : "IT services platform (HTML5, CSS3, JS)"}</span>
   </div>
   <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
-    <span class="text-emerald-400 font-bold">5. PulseMobile</span>
+    <span class="text-emerald-400 font-bold">8. PulseMobile</span>
     <span class="text-slate-300">${isFr ? "Application mobile cross-platform (Flutter, Dart, API REST)" : "Cross-platform mobile app (Flutter, Dart, REST API)"}</span>
   </div>
+</div>`);
+      break;
+
+    case "digiscore":
+      appendTerminalLine(`
+<div class="p-3 rounded-lg bg-slate-900 border border-emerald-900/50 text-xs space-y-2 text-slate-300">
+  <div class="flex items-center gap-2 text-emerald-400 font-bold">
+    <svg class="w-4 h-4"><use href="#icon-shield" /></svg>
+    <span>${isFr ? "DigiScore Coop 360 — Aide à la Décision Microfinance (UEMOA / BCEAO)" : "DigiScore Coop 360 — Microcredit Decision Support (WAEMU)"}</span>
+  </div>
+  <p>${isFr ? "Plateforme full-stack souveraine conçue pour les Systèmes Financiers Décentralisés (SFD, COOPEC) :" : "Sovereign full-stack platform for Decentralized Financial Systems (SFD, COOPEC):"}</p>
+  <ul class="list-disc list-inside space-y-1 text-slate-300">
+    <li><strong class="text-white">${isFr ? "Moteur de scoring multidimensionnel :" : "Multidimensional Scoring Engine:"}</strong> ${isFr ? "6 dimensions officielles (1 000 pts), 5 classes prudentielles et Hard Filters RM-001." : "6 regulatory dimensions (1,000 pts), 5 risk tiers, and RM-001 Hard Filters."}</li>
+    <li><strong class="text-white">${isFr ? "Coffre-fort WORM sous PostgreSQL :" : "PostgreSQL WORM Audit Vault:"}</strong> ${isFr ? "Scellement cryptographique SHA-256 avec triggers interdisant tout UPDATE ou DELETE." : "SHA-256 cryptographic sealing with triggers preventing UPDATE and DELETE."}</li>
+    <li><strong class="text-white">${isFr ? "Simulateur What-If en RAM :" : "In-Memory What-If Simulator:"}</strong> ${isFr ? "Algorithme Goal Seek sans altération de la base scellée." : "Goal Seek algorithm operating strictly in RAM without altering data."}</li>
+    <li><strong class="text-white">${isFr ? "Graphe anti-fraude & Mobile Money :" : "Anti-Fraud Graph & Mobile Money:"}</strong> ${isFr ? "Détection des cautions circulaires et reconstitution des flux Orange/Moov/Wave." : "Circular guarantee detection and cash-flow reconciliation (Orange, Moov, Wave)."}</li>
+  </ul>
+</div>`);
+      break;
+
+    case "repairos":
+      appendTerminalLine(`
+<div class="p-3 rounded-lg bg-slate-900 border border-cyan-900/50 text-xs space-y-2 text-slate-300">
+  <div class="flex items-center gap-2 text-cyan-400 font-bold">
+    <svg class="w-4 h-4"><use href="#icon-database" /></svg>
+    <span>${isFr ? "RepairOS — SaaS Ateliers & Maintenance Professionnelle" : "RepairOS — Repair Workshop Management SaaS"}</span>
+  </div>
+  <p>${isFr ? "Logiciel SaaS multi-tenant complet pour réparateurs informatiques et électroniques (devises FCFA/XOF) :" : "Full multi-tenant SaaS for computer & electronic repair shops (FCFA/XOF currency):"}</p>
+  <ul class="list-disc list-inside space-y-1 text-slate-300">
+    <li><strong class="text-white">${isFr ? "Machine à états stricte :" : "Strict State Machine:"}</strong> ${isFr ? "Cycle de réparation complet à 9 statuts contrôlés avec historique des transitions." : "Full repair cycle with 9 guarded statuses and transition history."}</li>
+    <li><strong class="text-white">${isFr ? "Rigueur financière :" : "Financial Integrity:"}</strong> ${isFr ? "Devis verrouillés, factures immuables (FAC-YYYY-xxxx), acomptes et reçus numérotés." : "Locked quotes, immutable invoices, deposits, and sequential receipts."}</li>
+    <li><strong class="text-white">${isFr ? "Suivi public sécurisé & WhatsApp :" : "Secure Public Tracking & WhatsApp:"}</strong> ${isFr ? "Lien chiffré /suivi/{token} (64 car.) sans compte et notifications WhatsApp wa.me en 1 clic." : "Encrypted /suivi/{token} link without login and 1-tap WhatsApp alerts."}</li>
+    <li><strong class="text-white">${isFr ? "Multi-Tenancy strict :" : "Strict Multi-Tenancy:"}</strong> ${isFr ? "Isolation totale des données inter-ateliers avec politiques RBAC (OWNER, ADMIN, TECHNICIAN)." : "Strict tenant data isolation and RBAC (OWNER, ADMIN, TECHNICIAN)."}</li>
+  </ul>
+</div>`);
+      break;
+
+    case "yaquoi":
+      appendTerminalLine(`
+<div class="p-3 rounded-lg bg-slate-900 border border-amber-900/50 text-xs space-y-2 text-slate-300">
+  <div class="flex items-center gap-2 text-amber-400 font-bold">
+    <svg class="w-4 h-4"><use href="#icon-smartphone" /></svg>
+    <span>${isFr ? "Y'aquoi — Marketplace Souveraine Burkinabè (C2C / B2C)" : "Y'aquoi — Sovereign Burkinabe Marketplace (C2C / B2C)"}</span>
+  </div>
+  <p>${isFr ? "Écosystème e-commerce (Monorepo) adapté aux réalités locales du Burkina Faso :" : "Sovereign e-commerce ecosystem tailored to local realities in Burkina Faso:"}</p>
+  <ul class="list-disc list-inside space-y-1 text-slate-300">
+    <li><strong class="text-white">${isFr ? "Paiement séquestre garanti :" : "Guaranteed Escrow Payment:"}</strong> ${isFr ? "Fonds sécurisés HELD libérés uniquement après inspection physique." : "HELD funds released only upon physical delivery verification."}</li>
+    <li><strong class="text-white">${isFr ? "Contrôle au déballage (15 min) :" : "15-Min Unboxing Countdown:"}</strong> ${isFr ? "Compte à rebours temps réel à la livraison pour valider ou déclarer un litige." : "Real-time countdown upon parcel receipt to confirm or open dispute."}</li>
+    <li><strong class="text-white">${isFr ? "Adresses hybrides (13 régions) :" : "Hybrid Local Addressing (13 Regions):"}</strong> ${isFr ? "Coordonnées GPS combinées à des repères visuels locaux partout au Faso." : "GPS coordinates paired with local visual landmarks across Burkina Faso."}</li>
+    <li><strong class="text-white">${isFr ? "Architecture Flutter & Laravel 12 :" : "Flutter & Laravel 12 Architecture:"}</strong> ${isFr ? "Clean Architecture + BLoC (123 tests) côté mobile, API REST & Filament 5 (57 tests) côté backend." : "Clean Architecture + BLoC (123 tests) on mobile, REST API & Filament 5 (57 tests) on backend."}</li>
+  </ul>
 </div>`);
       break;
 
