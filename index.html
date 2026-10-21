@@ -11,14 +11,68 @@
 
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Gonçalvès Cédrick | Développeur Web & Mobile" data-i18n-content="meta.og_title" />
+  <meta property="og:title" content="Gonçalvès Cédrick | Développeur Web & Mobile Fullstack" data-i18n-content="meta.og_title" />
   <meta property="og:description"
     content="Développeur Web & Mobile Fullstack spécialisé Laravel, Flutter, React, Architecture logicielle, CMS."
     data-i18n-content="meta.og_description" />
-  <meta property="og:image" content="assets/images/image.png" />
+  <meta property="og:image" content="https://goncalves-cedrick.dev/assets/images/image.png" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="1000" />
+  <meta property="og:image:alt" content="Portrait de Gonçalvès Cédrick" />
   <meta property="og:url" content="https://goncalves-cedrick.dev" />
+  <meta property="og:locale" content="fr_FR" />
   <link rel="canonical" href="https://goncalves-cedrick.dev" />
+
+  <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gonçalvès Cédrick | Développeur Web & Mobile Fullstack" data-i18n-content="meta.og_title" />
+  <meta name="twitter:description"
+    content="Développeur Web & Mobile Fullstack spécialisé Laravel, Flutter, React, Architecture logicielle, CMS."
+    data-i18n-content="meta.og_description" />
+  <meta name="twitter:image" content="https://goncalves-cedrick.dev/assets/images/image.png" />
+
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)" />
+
+  <!-- Structured Data (JSON-LD Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gonçalvès Cédrick",
+    "jobTitle": "Développeur Web & Mobile Fullstack",
+    "url": "https://goncalves-cedrick.dev",
+    "image": "https://goncalves-cedrick.dev/assets/images/image.png",
+    "email": "mailto:goncalvescedrick32@gmail.com",
+    "telephone": "+22606196835",
+    "sameAs": [
+      "https://github.com/Goncalvescedrick",
+      "https://www.linkedin.com/in/goncalvescedrick"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ouagadougou",
+      "addressCountry": "Burkina Faso"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Institut Supérieur de Technologies (IST)"
+    },
+    "knowsAbout": [
+      "Laravel",
+      "PHP 8",
+      "Flutter",
+      "Dart",
+      "React",
+      "Tailwind CSS",
+      "MySQL",
+      "Architecture Logicielle",
+      "Sécurité Informatique & Audit",
+      "Réseaux et Systèmes"
+    ]
+  }
+  </script>
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml"
@@ -149,6 +203,25 @@
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
       <circle cx="12" cy="10" r="3" />
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+      <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+    </symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </symbol>
+    <symbol id="icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="4 17 10 11 4 5" />
+      <line x1="12" y1="19" x2="20" y2="19" />
     </symbol>
   </svg>
 
@@ -301,6 +374,10 @@
               class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="LinkedIn">
               <svg class="w-5 h-5"><use href="#icon-linkedin" /></svg>
             </a>
+            <a href="https://wa.me/22606196835?text=Bonjour%20C%C3%A9drick%2C%20j%27ai%20vu%20votre%20portfolio" target="_blank" rel="noopener"
+              class="hover:text-emerald-500 dark:hover:text-emerald-400 transition" aria-label="WhatsApp" title="Discuter sur WhatsApp">
+              <svg class="w-5 h-5"><use href="#icon-whatsapp" /></svg>
+            </a>
             <a href="mailto:goncalvescedrick32@gmail.com"
               class="hover:text-blue-600 dark:hover:text-blue-400 transition" aria-label="Email">
               <svg class="w-5 h-5"><use href="#icon-mail" /></svg>
@@ -315,8 +392,11 @@
         <div class="reveal hero-visual">
           <div class="profile-card relative group">
             <div class="profile-frame">
-              <img src="assets/images/image.png" alt="Portrait de Gonçalvès Cédrick" fetchpriority="high"
-                class="transition-transform duration-500 group-hover:scale-105" />
+              <picture>
+                <source srcset="assets/images/image.webp" type="image/webp" />
+                <img src="assets/images/image.png" alt="Portrait de Gonçalvès Cédrick" width="390" height="488" fetchpriority="high"
+                  class="transition-transform duration-500 group-hover:scale-105" />
+              </picture>
             </div>
             <div class="profile-meta">
               <span class="status-dot"></span>
@@ -365,14 +445,17 @@
           <!-- ─── Projet 1: BCLCC (star project) ─── -->
           <article class="project-card project-card--featured reveal" data-category="backend"
             data-title-fr="Gestion des Dossiers & Plaintes — BCLCC" data-title-en="Case & Complaints Management — BCLCC"
-            data-img="assets/projects/bclcc.png"
+            data-img="assets/projects/bclcc.webp"
             data-desc-fr="Application web métier conçue lors de mon stage à la Brigade Centrale de Lutte Contre la Cybercriminalité (BCLCC). Gestion centralisée des dossiers, plaintes, courriers officiels, scellés et assistance technique. Mise en œuvre d'une architecture sécurisée avec rôles/permissions (RBAC), journal d'audit et modélisation de données optimisée."
             data-desc-en="Mission-critical web application designed during my internship at the Central Cybercrime Investigation Brigade (BCLCC). Centralized tracking of case files, complaints, official mail, evidence seals, and technical assistance. Implemented a secure RBAC architecture, audit logs, and optimized database modeling."
             data-tech="Laravel, PHP 8, MySQL, Blade, Tailwind CSS, Alpine.js"
             data-code="https://github.com/Goncalvescedrick/Final/tree/main/gestion-dossiers-at">
             <div class="relative overflow-hidden group">
-              <img src="assets/projects/bclcc.png" alt="Plateforme de gestion BCLCC" loading="lazy"
-                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <picture>
+                <source srcset="assets/projects/bclcc.webp" type="image/webp" />
+                <img src="assets/projects/bclcc.png" alt="Plateforme de gestion BCLCC" width="600" height="338" loading="lazy"
+                  class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              </picture>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Voir les détails">
@@ -420,14 +503,17 @@
           <!-- ─── Projet 2: Clinique ─── -->
           <article class="project-card reveal" style="--delay: 100ms" data-category="backend"
             data-title-fr="Clinique — Gestion Médicale" data-title-en="Clinique — Medical Management"
-            data-img="assets/projects/clinique1.png"
+            data-img="assets/projects/clinique1.webp"
             data-desc-fr="Application web complète de gestion d'une clinique médicale développée avec PHP, MySQL et Bootstrap. Gestion des rendez-vous, suivi des dossiers patients, et contrôle d'accès multi-utilisateurs avec authentification sécurisée."
             data-desc-en="Complete medical clinic management web application developed with PHP, MySQL, and Bootstrap. Appointment scheduling, patient record tracking, and multi-user access control with secure authentication."
             data-tech="PHP 8, MySQL, Bootstrap, JavaScript"
             data-code="https://github.com/Goncalvescedrick/gestion_clinique">
             <div class="relative overflow-hidden group">
-              <img src="assets/projects/clinique1.png" alt="Plateforme de gestion médicale" loading="lazy"
-                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <picture>
+                <source srcset="assets/projects/clinique1.webp" type="image/webp" />
+                <img src="assets/projects/clinique1.png" alt="Plateforme de gestion médicale" width="600" height="338" loading="lazy"
+                  class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              </picture>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Voir les détails">
@@ -467,14 +553,17 @@
           <!-- ─── Projet 3: Clever-Group ─── -->
           <article class="project-card reveal" style="--delay: 150ms" data-category="frontend"
             data-title-fr="Site Web Clever-Group" data-title-en="Clever-Group Website"
-            data-img="assets/projects/clever.png"
+            data-img="assets/projects/clever.webp"
             data-desc-fr="Site web vitrine moderne et dynamique développé pour Clever-Group, une entreprise évoluant dans les services digitaux. Conception responsive, animations fluides et composants React réutilisables."
             data-desc-en="Modern and dynamic showcase website developed for Clever-Group, a company operating in digital services. Responsive design, fluid animations, and reusable React components."
             data-tech="React, JavaScript, Tailwind CSS, Vite" data-demo="https://site-clever-group.vercel.app/"
             data-code="https://github.com/Goncalvescedrick/clever-group">
             <div class="relative overflow-hidden group">
-              <img src="assets/projects/clever.png" alt="Site web Clever-Group" loading="lazy"
-                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <picture>
+                <source srcset="assets/projects/clever.webp" type="image/webp" />
+                <img src="assets/projects/clever.png" alt="Site web Clever-Group" width="600" height="338" loading="lazy"
+                  class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              </picture>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Voir les détails">
@@ -514,15 +603,18 @@
 
           <!-- ─── Projet 4: ACE Tech ─── -->
           <article class="project-card reveal" style="--delay: 200ms" data-category="frontend"
-            data-title-fr="Site Web ACE Tech" data-title-en="ACE Tech Website" data-img="assets/projects/ace.png"
+            data-title-fr="Site Web ACE Tech" data-title-en="ACE Tech Website" data-img="assets/projects/ace.webp"
             data-desc-fr="Plateforme web vitrine développée pour ACE Tech, entreprise spécialisée dans les technologies et services informatiques. Interface moderne, responsive et optimisée pour la performance."
             data-desc-en="Showcase web platform developed for ACE Tech, a company specialized in IT services and technologies. Modern, responsive interface optimized for performance."
             data-tech="HTML5, CSS3, JavaScript, Responsive Design"
             data-demo="https://goncalvescedrick.github.io/Site-Ace/"
             data-code="https://github.com/Goncalvescedrick/Site-Ace">
             <div class="relative overflow-hidden group">
-              <img src="assets/projects/ace.png" alt="Site web ACE Tech" loading="lazy"
-                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <picture>
+                <source srcset="assets/projects/ace.webp" type="image/webp" />
+                <img src="assets/projects/ace.png" alt="Site web ACE Tech" width="600" height="338" loading="lazy"
+                  class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              </picture>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Voir les détails">
@@ -563,14 +655,17 @@
           <!-- ─── Projet 5: PulseMobile (Flutter) ─── -->
           <article class="project-card reveal" style="--delay: 250ms" data-category="mobile"
             data-title-fr="PulseMobile — Application Flutter" data-title-en="PulseMobile — Flutter App"
-            data-img="assets/projects/mobile.png"
+            data-img="assets/projects/mobile.webp"
             data-desc-fr="Application mobile multiplateforme développée avec Flutter & Dart, connectée à une API REST headless (Strapi / Laravel). Gestion des dépenses, synchronisation des données et interface réactive avec gestion d'état."
             data-desc-en="Cross-platform mobile application developed with Flutter & Dart, connected to a headless REST API (Strapi / Laravel). Expense tracking, data synchronization, and reactive UI with state management."
             data-tech="Flutter, Dart, REST API, Strapi CMS, SQLite, Provider"
             data-code="https://github.com/Goncalvescedrick/mobile">
             <div class="relative overflow-hidden group">
-              <img src="assets/projects/mobile.png" alt="Application mobile PulseMobile" loading="lazy"
-                class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              <picture>
+                <source srcset="assets/projects/mobile.webp" type="image/webp" />
+                <img src="assets/projects/mobile.png" alt="Application mobile PulseMobile" width="600" height="338" loading="lazy"
+                  class="transition-transform duration-500 group-hover:scale-105 w-full aspect-video object-cover" />
+              </picture>
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <button class="btn-open-modal text-xs btn btn-light py-2 px-3 shadow-lg" aria-label="Voir les détails">
@@ -756,27 +851,59 @@
           </p>
 
           <div class="contact-list mt-8">
-            <a href="mailto:goncalvescedrick32@gmail.com" class="group">
+            <!-- WhatsApp Direct Card -->
+            <a href="https://wa.me/22606196835?text=Bonjour%20C%C3%A9drick%2C%20j%27ai%20vu%20votre%20portfolio" target="_blank" rel="noopener"
+              class="contact-card--whatsapp group">
               <div class="flex items-center gap-3">
+                <span
+                  class="p-2 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5"><use href="#icon-whatsapp" /></svg>
+                </span>
+                <div>
+                  <strong class="block text-slate-900 dark:text-white" data-i18n="contact.whatsapp_label">WhatsApp Direct</strong>
+                  <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold" data-i18n="contact.whatsapp_action">Démarrer une discussion instantanée</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+                +226 06 19 68 35
+              </span>
+            </a>
+
+            <!-- Email Card with Quick Copy -->
+            <div class="contact-card group">
+              <a href="mailto:goncalvescedrick32@gmail.com" class="flex items-center gap-3 flex-1 min-w-0" aria-label="Envoyer un email">
                 <span
                   class="p-2 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400 group-hover:scale-110 transition-transform">
                   <svg class="w-5 h-5"><use href="#icon-mail" /></svg>
                 </span>
-                <strong>Email</strong>
-              </div>
-              <span class="text-slate-500 dark:text-slate-400 text-sm">goncalvescedrick32@gmail.com</span>
-            </a>
+                <div class="truncate">
+                  <strong class="block text-slate-900 dark:text-white">Email</strong>
+                  <span class="text-slate-500 dark:text-slate-400 text-sm truncate block">goncalvescedrick32@gmail.com</span>
+                </div>
+              </a>
+              <button type="button" class="btn-copy-clipboard" data-copy="goncalvescedrick32@gmail.com"
+                aria-label="Copier l'adresse email" title="Copier l'email">
+                <svg class="w-4 h-4 icon-copy-state"><use href="#icon-copy" /></svg>
+              </button>
+            </div>
 
-            <a href="tel:+22606196835" class="group">
-              <div class="flex items-center gap-3">
+            <!-- Phone Card with Quick Copy -->
+            <div class="contact-card group">
+              <a href="tel:+22606196835" class="flex items-center gap-3 flex-1 min-w-0" aria-label="Appeler le numéro">
                 <span
-                  class="p-2 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                  class="p-2 rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400 group-hover:scale-110 transition-transform">
                   <svg class="w-5 h-5"><use href="#icon-phone" /></svg>
                 </span>
-                <strong data-i18n="contact.phone_label">Téléphone / WhatsApp</strong>
-              </div>
-              <span class="text-slate-500 dark:text-slate-400 text-sm">+226 06 19 68 35 / 58 73 81 46</span>
-            </a>
+                <div>
+                  <strong class="block text-slate-900 dark:text-white" data-i18n="contact.phone_label">Téléphone</strong>
+                  <span class="text-slate-500 dark:text-slate-400 text-sm">+226 06 19 68 35 / 58 73 81 46</span>
+                </div>
+              </a>
+              <button type="button" class="btn-copy-clipboard" data-copy="+22606196835"
+                aria-label="Copier le numéro de téléphone" title="Copier le numéro">
+                <svg class="w-4 h-4 icon-copy-state"><use href="#icon-copy" /></svg>
+              </button>
+            </div>
 
             <div class="group flex items-center justify-between py-3 border-b border-slate-200/60 dark:border-slate-800/60">
               <div class="flex items-center gap-3">
@@ -816,38 +943,44 @@
 
         <div class="relative">
           <form id="contact-form" class="contact-form reveal" style="--delay: 120ms">
+            <!-- Web3Forms Access Key (Entrez votre clé gratuite générée sur web3forms.com si disponible) -->
+            <input type="hidden" name="access_key" value="" id="contact-access-key" />
+            <input type="hidden" name="from_name" value="Portfolio Cédrick Gonçalvès" />
+            <!-- Honeypot anti-spam -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
+
             <div class="grid gap-5 sm:grid-cols-2">
-              <label class="flex flex-col gap-1">
+              <label for="contact-name" class="flex flex-col gap-1">
                 <span data-i18n="contact.form.name">Nom & Prénom</span>
-                <input type="text" name="name" placeholder="Votre nom"
+                <input type="text" id="contact-name" name="name" autocomplete="name" placeholder="Votre nom"
                   data-i18n-placeholder="contact.form.name_placeholder" required />
               </label>
-              <label class="flex flex-col gap-1">
+              <label for="contact-email" class="flex flex-col gap-1">
                 <span data-i18n="contact.form.email">Email</span>
-                <input type="email" name="email" placeholder="votre@email.com"
+                <input type="email" id="contact-email" name="email" autocomplete="email" placeholder="votre@email.com"
                   data-i18n-placeholder="contact.form.email_placeholder" required />
               </label>
             </div>
-            <label class="flex flex-col gap-1">
+            <label for="contact-subject" class="flex flex-col gap-1">
               <span data-i18n="contact.form.subject">Sujet</span>
-              <input type="text" name="subject" placeholder="Opportunité de recrutement / projet"
+              <input type="text" id="contact-subject" name="subject" placeholder="Opportunité de recrutement / projet"
                 data-i18n-placeholder="contact.form.subject_placeholder" required />
             </label>
-            <label class="flex flex-col gap-1">
+            <label for="contact-message" class="flex flex-col gap-1">
               <span data-i18n="contact.form.message">Message</span>
-              <textarea name="message" rows="5" placeholder="Décrivez votre proposition..."
+              <textarea id="contact-message" name="message" rows="5" placeholder="Décrivez votre proposition..."
                 data-i18n-placeholder="contact.form.message_placeholder" required></textarea>
             </label>
 
-            <!-- Feedback Alert Box -->
-            <div id="form-feedback" class="hidden p-4 rounded-lg text-sm font-medium"></div>
+            <!-- Feedback Alert Box with Accessible Live Region -->
+            <div id="form-feedback" class="hidden p-4 rounded-lg text-sm font-medium transition-all" role="status" aria-live="polite"></div>
 
-            <button class="btn btn-primary w-full justify-center text-base py-3" type="submit">
-              <span data-i18n="contact.form.submit">Envoyer le message</span>
-              <svg class="w-5 h-5 ml-2"><use href="#icon-send" /></svg>
+            <button id="form-submit-btn" class="btn btn-primary w-full justify-center text-base py-3" type="submit">
+              <span id="form-submit-text" data-i18n="contact.form.submit">Envoyer le message</span>
+              <svg id="form-submit-icon" class="w-5 h-5 ml-2"><use href="#icon-send" /></svg>
             </button>
             <p class="text-xs text-slate-400 dark:text-slate-500 text-center mt-1" data-i18n="contact.form.hint">
-              Ce formulaire ouvre votre application email pour envoyer le message.
+              Vos messages me parviennent directement sur goncalvescedrick32@gmail.com.
             </p>
           </form>
         </div>
@@ -860,7 +993,7 @@
        ════════════════════════════════════════════════════════════════ -->
   <div id="project-modal"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
-    role="dialog" aria-modal="true" aria-hidden="true" aria-label="Détails du projet">
+    role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
     <div
       class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl transition-transform duration-300 scale-95 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
       id="modal-container">
@@ -906,15 +1039,86 @@
   <footer class="bg-slate-900 border-t border-slate-800 px-5 py-8 text-white">
     <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between lg:px-8">
       <p class="text-slate-400" data-i18n="footer.copy">© 2026 Gonçalvès Cédrick. Tous droits réservés.</p>
-      <div class="flex gap-6 text-slate-300">
+      <div class="flex flex-wrap gap-6 text-slate-300">
+        <a href="https://wa.me/22606196835?text=Bonjour%20C%C3%A9drick%2C%20j%27ai%20vu%20votre%20portfolio" target="_blank" rel="noopener"
+          class="hover:text-emerald-400 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4"><use href="#icon-whatsapp" /></svg>
+          <span>WhatsApp</span>
+        </a>
         <a href="https://github.com/Goncalvescedrick" target="_blank" rel="noopener"
-          class="hover:text-blue-400 transition">GitHub</a>
+          class="hover:text-blue-400 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4"><use href="#icon-github" /></svg>
+          <span>GitHub</span>
+        </a>
         <a href="https://www.linkedin.com/in/goncalvescedrick" target="_blank" rel="noopener"
-          class="hover:text-blue-400 transition">LinkedIn</a>
-        <a href="mailto:goncalvescedrick32@gmail.com" class="hover:text-blue-400 transition">Email</a>
+          class="hover:text-blue-400 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4"><use href="#icon-linkedin" /></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:goncalvescedrick32@gmail.com" class="hover:text-blue-400 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4"><use href="#icon-mail" /></svg>
+          <span>Email</span>
+        </a>
       </div>
     </div>
   </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-notify"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 rounded-xl bg-slate-900/95 px-4 py-3 text-sm font-semibold text-white shadow-2xl backdrop-blur border border-slate-800 opacity-0 pointer-events-none transition-all duration-300 translate-y-3 dark:bg-white/95 dark:text-slate-900 dark:border-slate-200">
+    <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-600 shrink-0"><use href="#icon-check" /></svg>
+    <span id="toast-text">Copié dans le presse-papier !</span>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       TERMINAL DÉVELOPPEUR CLI (Ctrl+K / Raccourci interactif)
+       ════════════════════════════════════════════════════════════════ -->
+  <div id="cli-terminal-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300"
+    role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="terminal-title">
+    <div
+      class="relative w-full max-w-2xl rounded-2xl bg-slate-950 text-slate-100 shadow-2xl border border-slate-800 flex flex-col overflow-hidden font-mono text-sm transition-transform duration-300 scale-95"
+      id="terminal-window">
+
+      <!-- Terminal Title Bar -->
+      <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800 select-none">
+        <div class="flex items-center gap-2">
+          <button id="terminal-close-btn" class="w-3 h-3 rounded-full bg-rose-500 hover:opacity-80 transition cursor-pointer" aria-label="Fermer le terminal" title="Fermer (Échap)"></button>
+          <span class="w-3 h-3 rounded-full bg-amber-500 opacity-60"></span>
+          <button id="terminal-maximize-btn" class="w-3 h-3 rounded-full bg-emerald-500 hover:opacity-80 transition cursor-pointer" aria-label="Agrandir / Réduire" title="Agrandir"></button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-semibold" id="terminal-title">
+          <svg class="w-3.5 h-3.5 text-blue-400"><use href="#icon-terminal" /></svg>
+          <span>cedrick@bclcc-sec: ~/portfolio</span>
+        </div>
+        <div class="text-[11px] text-slate-500 hidden sm:block">
+          <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">Esc</kbd> pour quitter
+        </div>
+      </div>
+
+      <!-- Terminal Output Screen -->
+      <div id="terminal-output" class="p-4 overflow-y-auto space-y-2 max-h-[60vh] min-h-[320px] select-text">
+        <!-- Content injected dynamically via script.js -->
+      </div>
+
+      <!-- Terminal Input Line -->
+      <form id="terminal-form" class="flex items-center gap-2 px-4 py-3 bg-slate-900/90 border-t border-slate-800">
+        <span class="text-emerald-400 font-bold shrink-0">cedrick@sec:~$</span>
+        <input id="terminal-input" type="text" autocomplete="off" spellcheck="false"
+          class="flex-1 bg-transparent text-slate-100 placeholder-slate-600 outline-none border-none font-mono text-sm p-0 m-0"
+          placeholder="Tapez une commande (ex: help, skills, bclcc, contact, clear)..." />
+      </form>
+    </div>
+  </div>
+
+  <!-- Terminal Floating Trigger Button -->
+  <button id="terminal-trigger-btn"
+    class="fixed bottom-6 left-6 z-40 hidden sm:inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-3.5 py-2 text-xs font-bold text-slate-700 shadow-xl backdrop-blur-md transition-all hover:scale-105 hover:border-blue-500 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-200 dark:hover:border-blue-400 dark:hover:text-blue-400"
+    aria-label="Ouvrir le terminal développeur">
+    <svg class="w-4 h-4 text-emerald-500 animate-pulse"><use href="#icon-terminal" /></svg>
+    <span class="font-mono">CLI</span>
+    <kbd class="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500 border border-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400">Ctrl+K</kbd>
+  </button>
 
   <!-- Back to Top Button -->
   <button id="back-to-top"

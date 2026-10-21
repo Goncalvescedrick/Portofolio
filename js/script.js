@@ -121,6 +121,8 @@ const translations = {
     "contact.title": "Disponible pour un poste, un stage ou un projet.",
     "contact.desc": "Je suis prêt à rejoindre votre équipe et contribuer à vos projets Web & Mobile. Écrivez-moi directement ou utilisez le formulaire ci-contre.",
     "contact.phone_label": "Téléphone / WhatsApp",
+    "contact.whatsapp_label": "WhatsApp Direct",
+    "contact.whatsapp_action": "Démarrer une discussion instantanée",
     "contact.location_label": "Localisation",
     "contact.location_value": "Ouagadougou, Burkina Faso",
     "contact.form.name": "Nom & Prénom",
@@ -132,9 +134,16 @@ const translations = {
     "contact.form.message": "Message",
     "contact.form.message_placeholder": "Décrivez votre proposition...",
     "contact.form.submit": "Envoyer le message",
-    "contact.form.hint": "Ce formulaire ouvre votre application email pour envoyer le message.",
+    "contact.form.sending": "Envoi en cours...",
+    "contact.form.hint": "Vos messages me parviennent directement sur goncalvescedrick32@gmail.com.",
     "contact.feedback.sending": "Préparation de l'envoi email pour {name}...",
     "contact.feedback.success": "✔ Votre application email s'ouvre pour envoyer le message.",
+    "contact.feedback.sent_success": "✔ Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+    "contact.feedback.fallback": "✔ Ouverture de votre application email pour finaliser l'envoi...",
+    "contact.feedback.error": "❌ Impossible d'envoyer directement. Veuillez utiliser le lien email ci-dessus.",
+    "contact.toast.email_copied": "✔ Adresse email copiée dans le presse-papier !",
+    "contact.toast.phone_copied": "✔ Numéro de téléphone copié !",
+    "contact.toast.copied": "✔ Copié dans le presse-papier !",
     "footer.copy": "© 2026 Gonçalvès Cédrick. Tous droits réservés.",
     "modal.key_tech": "Technologies clés :",
     "modal.demo": "Voir la Démo",
@@ -225,6 +234,8 @@ const translations = {
     "contact.title": "Available for a position, internship, or project.",
     "contact.desc": "I'm ready to join your team and contribute to your Web & Mobile projects. Reach out directly or use the form.",
     "contact.phone_label": "Phone / WhatsApp",
+    "contact.whatsapp_label": "Direct WhatsApp",
+    "contact.whatsapp_action": "Start an instant conversation",
     "contact.location_label": "Location",
     "contact.location_value": "Ouagadougou, Burkina Faso",
     "contact.form.name": "Full Name",
@@ -236,9 +247,16 @@ const translations = {
     "contact.form.message": "Message",
     "contact.form.message_placeholder": "Describe your proposal...",
     "contact.form.submit": "Send Message",
-    "contact.form.hint": "This form opens your email app to send the message.",
+    "contact.form.sending": "Sending...",
+    "contact.form.hint": "Your messages reach me directly at goncalvescedrick32@gmail.com.",
     "contact.feedback.sending": "Preparing email for {name}...",
     "contact.feedback.success": "✔ Your email app is opening to send the message.",
+    "contact.feedback.sent_success": "✔ Message sent successfully! I will get back to you as soon as possible.",
+    "contact.feedback.fallback": "✔ Opening your email app to finalize sending...",
+    "contact.feedback.error": "❌ Unable to send directly. Please use the direct email link above.",
+    "contact.toast.email_copied": "✔ Email address copied to clipboard!",
+    "contact.toast.phone_copied": "✔ Phone number copied!",
+    "contact.toast.copied": "✔ Copied to clipboard!",
     "footer.copy": "© 2026 Gonçalvès Cédrick. All rights reserved.",
     "modal.key_tech": "Key Technologies:",
     "modal.demo": "View Demo",
@@ -453,10 +471,62 @@ filterButtons.forEach((button) => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 7. PROJECT MODAL DETAILED VIEW
+// 7. PROJECT MODAL DETAILED VIEW (Accessible & Focus-Trapped)
 // ═══════════════════════════════════════════════════════
-function openModal(card) {
+let lastFocusedElement = null;
+
+function getModalFocusableElements() {
+  if (!projectModal) return [];
+  const focusableSelectors = [
+    "button:not([disabled])",
+    "a[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])"
+  ];
+  return Array.from(projectModal.querySelectorAll(focusableSelectors.join(",")))
+    .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0);
+}
+
+function handleModalKeyDown(e) {
+  if (!projectModal?.classList.contains("is-open")) return;
+
+  if (e.key === "Escape") {
+    e.preventDefault();
+    closeModal();
+    return;
+  }
+
+  if (e.key === "Tab") {
+    const focusable = getModalFocusableElements();
+    if (focusable.length === 0) {
+      e.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+}
+
+function openModal(card, triggerButton = null) {
   if (!card) return;
+
+  // Remember the trigger element to restore focus when closing
+  lastFocusedElement = triggerButton || document.activeElement;
 
   document.querySelectorAll(".project-card").forEach(c => c.classList.remove("is-active"));
   card.classList.add("is-active");
@@ -504,12 +574,20 @@ function openModal(card) {
     });
   }
 
+  // Set inert on background containers for full accessibility
+  document.querySelector("header")?.setAttribute("inert", "");
+  document.querySelector("main")?.setAttribute("inert", "");
+  document.querySelector("footer")?.setAttribute("inert", "");
+  backToTopBtn?.setAttribute("inert", "");
+
   projectModal?.classList.add("is-open");
   projectModal?.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 
   // Focus trap: focus the close button
-  modalClose?.focus();
+  setTimeout(() => {
+    modalClose?.focus();
+  }, 50);
 }
 
 function closeModal() {
@@ -517,13 +595,24 @@ function closeModal() {
   projectModal?.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
   document.querySelectorAll(".project-card").forEach(c => c.classList.remove("is-active"));
+
+  // Remove inert on background containers
+  document.querySelector("header")?.removeAttribute("inert");
+  document.querySelector("main")?.removeAttribute("inert");
+  document.querySelector("footer")?.removeAttribute("inert");
+  backToTopBtn?.removeAttribute("inert");
+
+  // Restore focus to original element
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    lastFocusedElement.focus();
+  }
 }
 
 document.querySelectorAll(".btn-open-modal").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     const card = btn.closest(".project-card");
-    openModal(card);
+    openModal(card, btn);
   });
 });
 
@@ -535,41 +624,94 @@ projectModal?.addEventListener("click", (e) => {
   }
 });
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && projectModal?.classList.contains("is-open")) {
-    closeModal();
-  }
-});
+document.addEventListener("keydown", handleModalKeyDown);
 
 // ═══════════════════════════════════════════════════════
-// 8. CONTACT FORM SUBMISSION
+// 8. CONTACT FORM SUBMISSION (Serverless Web3Forms + Fallback)
 // ═══════════════════════════════════════════════════════
-contactForm?.addEventListener("submit", (event) => {
+const formSubmitBtn = document.querySelector("#form-submit-btn");
+const formSubmitText = document.querySelector("#form-submit-text");
+
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const formData = new FormData(contactForm);
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const subject = formData.get("subject");
-  const message = formData.get("message");
+  const name = (formData.get("name") || "").toString().trim();
+  const email = (formData.get("email") || "").toString().trim();
+  const subject = (formData.get("subject") || "").toString().trim();
+  const message = (formData.get("message") || "").toString().trim();
+  const accessKey = (formData.get("access_key") || "").toString().trim();
 
-  if (formFeedback) {
-    formFeedback.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-emerald-100", "text-emerald-700");
-    formFeedback.classList.add("bg-blue-100", "text-blue-800", "dark:bg-blue-950", "dark:text-blue-200");
-    const preparingMsg = translations[currentLang]["contact.feedback.sending"].replace("{name}", name);
-    formFeedback.textContent = preparingMsg;
+  // Basic validation
+  if (!name || !email || !subject || !message) {
+    if (formFeedback) {
+      formFeedback.className = "p-4 rounded-lg text-sm font-medium bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-200";
+      formFeedback.textContent = currentLang === "fr" ? "Veuillez renseigner tous les champs obligatoires." : "Please fill in all required fields.";
+      formFeedback.classList.remove("hidden");
+    }
+    return;
   }
 
+  // Update button state to loading
+  if (formSubmitBtn) formSubmitBtn.disabled = true;
+  if (formSubmitText) formSubmitText.textContent = translations[currentLang]["contact.form.sending"] || "Envoi en cours...";
+
+  if (formFeedback) {
+    formFeedback.className = "p-4 rounded-lg text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-200";
+    formFeedback.classList.remove("hidden");
+    const preparingMsg = (translations[currentLang]["contact.feedback.sending"] || "").replace("{name}", name);
+    formFeedback.textContent = preparingMsg || "Envoi en cours...";
+  }
+
+  // If a valid Web3Forms access key is configured, send via AJAX fetch
+  if (accessKey && accessKey !== "VOTRE_CLE_WEB3FORMS_ICI") {
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          from_name: "Portfolio Cédrick Gonçalvès"
+        })
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success) {
+        if (formFeedback) {
+          formFeedback.className = "p-4 rounded-lg text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200";
+          formFeedback.textContent = translations[currentLang]["contact.feedback.sent_success"];
+        }
+        contactForm.reset();
+        showToast(translations[currentLang]["contact.feedback.sent_success"]);
+        return;
+      }
+    } catch (err) {
+      console.warn("Échec de l'envoi direct Web3Forms, bascule vers le client email", err);
+    } finally {
+      if (formSubmitBtn) formSubmitBtn.disabled = false;
+      if (formSubmitText) formSubmitText.textContent = translations[currentLang]["contact.form.submit"] || "Envoyer le message";
+    }
+  }
+
+  // Fallback to mailto protocol
   const recipient = "goncalvescedrick32@gmail.com";
-  const body = `Bonjour Cédrick,%0D%0A%0D%0ANom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+  const body = `Bonjour Cédrick,%0D%0A%0D%0ANom: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
 
   setTimeout(() => {
     window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
     if (formFeedback) {
-      formFeedback.classList.remove("bg-blue-100", "text-blue-800");
-      formFeedback.classList.add("bg-emerald-100", "text-emerald-800", "dark:bg-emerald-950", "dark:text-emerald-200");
-      formFeedback.textContent = translations[currentLang]["contact.feedback.success"];
+      formFeedback.className = "p-4 rounded-lg text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200";
+      formFeedback.textContent = translations[currentLang]["contact.feedback.fallback"] || translations[currentLang]["contact.feedback.success"];
     }
+    if (formSubmitBtn) formSubmitBtn.disabled = false;
+    if (formSubmitText) formSubmitText.textContent = translations[currentLang]["contact.form.submit"] || "Envoyer le message";
   }, 400);
 });
 
@@ -584,7 +726,67 @@ backToTopBtn?.addEventListener("click", () => {
 });
 
 // ═══════════════════════════════════════════════════════
-// 10. MULTILINGUAL (i18n) SYSTEM
+// 10. QUICK COPY TO CLIPBOARD + TOAST NOTIFICATION
+// ═══════════════════════════════════════════════════════
+const toastNotify = document.querySelector("#toast-notify");
+const toastText = document.querySelector("#toast-text");
+let toastTimeout;
+
+function showToast(message) {
+  if (!toastNotify || !toastText) return;
+  toastText.textContent = message;
+  toastNotify.classList.remove("opacity-0", "pointer-events-none", "translate-y-3");
+  toastNotify.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
+
+  if (toastTimeout) clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toastNotify.classList.remove("opacity-100", "pointer-events-auto", "translate-y-0");
+    toastNotify.classList.add("opacity-0", "pointer-events-none", "translate-y-3");
+  }, 2600);
+}
+
+document.querySelectorAll(".btn-copy-clipboard").forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const textToCopy = btn.getAttribute("data-copy");
+    if (!textToCopy) return;
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(textToCopy);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+      }
+
+      // Visual feedback on button icon
+      const iconUse = btn.querySelector(".icon-copy-state use");
+      if (iconUse) {
+        iconUse.setAttribute("href", "#icon-check");
+        setTimeout(() => {
+          iconUse.setAttribute("href", "#icon-copy");
+        }, 2000);
+      }
+
+      const msg = textToCopy.includes("@")
+        ? (translations[currentLang]["contact.toast.email_copied"] || "Email copié !")
+        : (translations[currentLang]["contact.toast.phone_copied"] || "Numéro copié !");
+      showToast(msg);
+    } catch (err) {
+      console.error("Erreur de copie dans le presse-papier", err);
+    }
+  });
+});
+
+// ═══════════════════════════════════════════════════════
+// 11. MULTILINGUAL (i18n) SYSTEM
 // ═══════════════════════════════════════════════════════
 function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach((elem) => {
@@ -643,6 +845,358 @@ langToggle?.addEventListener("click", () => {
   currentLang = currentLang === "fr" ? "en" : "fr";
   localStorage.setItem("lang", currentLang);
   applyTranslations(currentLang);
+});
+
+// ═══════════════════════════════════════════════════════
+// 12. DEVELOPER CLI TERMINAL (Ctrl+K / Interactive Shell)
+// ═══════════════════════════════════════════════════════
+const cliTerminalModal = document.querySelector("#cli-terminal-modal");
+const terminalWindow = document.querySelector("#terminal-window");
+const terminalOutput = document.querySelector("#terminal-output");
+const terminalForm = document.querySelector("#terminal-form");
+const terminalInput = document.querySelector("#terminal-input");
+const terminalCloseBtn = document.querySelector("#terminal-close-btn");
+const terminalMaximizeBtn = document.querySelector("#terminal-maximize-btn");
+const terminalTriggerBtn = document.querySelector("#terminal-trigger-btn");
+
+let commandHistory = [];
+let historyCursor = -1;
+let terminalInitialized = false;
+
+const AVAILABLE_COMMANDS = [
+  "help",
+  "about",
+  "whoami",
+  "skills",
+  "stack",
+  "projects",
+  "ls",
+  "bclcc",
+  "contact",
+  "cv",
+  "download-cv",
+  "theme",
+  "lang",
+  "matrix",
+  "clear",
+  "cls",
+  "sudo",
+  "exit",
+  "quit"
+];
+
+function printTerminalBanner() {
+  if (!terminalOutput) return;
+  const isFr = currentLang === "fr";
+  const banner = `
+<div class="text-blue-400 font-bold leading-tight select-none">
+  ____ _____ ____  ____  ___ ____ _  __<br>
+ / ___| ____|  _ \\|  _ \\|_ _/ ___| |/ /<br>
+| |   |  _| | | | | |_) || | |   | ' / <br>
+| |___| |___| |_| |  _ < | | |___| . \\ <br>
+ \\____|_____|____/|_| \\_\\___\\____|_|\\_\\
+</div>
+<div class="text-slate-400 text-xs mt-2 space-y-1">
+  <p><span class="text-emerald-400 font-bold">[+]</span> Gonçalvès Cédrick — <span class="text-slate-200 font-semibold">Web & Mobile Fullstack / RSI (IST)</span></p>
+  <p><span class="text-blue-400 font-bold">[i]</span> ${isFr ? "Système interactif BCLCC CyberSec Shell v2.6" : "Interactive BCLCC CyberSec Shell v2.6"}</p>
+  <p><span class="text-amber-400 font-bold">[?]</span> ${isFr ? "Tapez <span class='text-cyan-300 font-bold'>help</span> pour la liste des commandes ou <span class='text-cyan-300 font-bold'>bclcc</span> pour le focus sécurité." : "Type <span class='text-cyan-300 font-bold'>help</span> for commands or <span class='text-cyan-300 font-bold'>bclcc</span> for security focus."}</p>
+</div>
+<hr class="border-slate-800 my-2">`;
+  terminalOutput.innerHTML = banner;
+}
+
+function openTerminal() {
+  if (!cliTerminalModal) return;
+  cliTerminalModal.classList.add("is-open");
+  cliTerminalModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  if (!terminalInitialized) {
+    printTerminalBanner();
+    terminalInitialized = true;
+  }
+
+  setTimeout(() => {
+    terminalInput?.focus();
+  }, 100);
+}
+
+function closeTerminal() {
+  if (!cliTerminalModal) return;
+  cliTerminalModal.classList.remove("is-open");
+  cliTerminalModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function toggleTerminal() {
+  if (cliTerminalModal?.classList.contains("is-open")) {
+    closeTerminal();
+  } else {
+    openTerminal();
+  }
+}
+
+function appendTerminalLine(html) {
+  if (!terminalOutput) return;
+  const line = document.createElement("div");
+  line.className = "text-xs sm:text-sm leading-relaxed";
+  line.innerHTML = html;
+  terminalOutput.appendChild(line);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+function executeCommand(rawCommand) {
+  const trimmed = rawCommand.trim();
+  if (!trimmed) return;
+
+  commandHistory.push(trimmed);
+  historyCursor = commandHistory.length;
+
+  // Print command line prompt
+  appendTerminalLine(`<div class="flex items-center gap-1.5 text-slate-400 mt-2"><span class="text-emerald-400 font-bold">cedrick@sec:~$</span> <span class="text-white font-semibold">${escapeHtml(trimmed)}</span></div>`);
+
+  const parts = trimmed.split(/\s+/);
+  const cmd = parts[0].toLowerCase();
+  const args = parts.slice(1);
+  const isFr = currentLang === "fr";
+
+  switch (cmd) {
+    case "help":
+      appendTerminalLine(`
+<div class="space-y-1.5 text-slate-300 mt-1">
+  <p class="text-cyan-400 font-bold uppercase tracking-wider text-xs">${isFr ? "Commandes disponibles :" : "Available commands:"}</p>
+  <div class="grid grid-cols-[140px_1fr] gap-x-2 gap-y-1 text-xs">
+    <span class="text-emerald-400 font-bold">help</span><span>${isFr ? "Affiche cette aide" : "Display this help list"}</span>
+    <span class="text-emerald-400 font-bold">about / whoami</span><span>${isFr ? "Profil & présentation de Cédrick" : "Profile & bio of Cédrick"}</span>
+    <span class="text-emerald-400 font-bold">skills / stack</span><span>${isFr ? "Stack technique (Laravel, Flutter, React, Réseaux)" : "Tech stack details"}</span>
+    <span class="text-emerald-400 font-bold">projects / ls</span><span>${isFr ? "Liste des projets réalisés" : "List of featured projects"}</span>
+    <span class="text-emerald-400 font-bold">bclcc</span><span>${isFr ? "Spécial BCLCC : Sécurité RBAC & audit trails" : "BCLCC security & audit highlights"}</span>
+    <span class="text-emerald-400 font-bold">contact</span><span>${isFr ? "Coordonnées (WhatsApp, Email, GitHub, LinkedIn)" : "Contact details"}</span>
+    <span class="text-emerald-400 font-bold">cv / download-cv</span><span>${isFr ? "Ouvre le CV (PDF)" : "Open resume (PDF)"}</span>
+    <span class="text-emerald-400 font-bold">theme [dark|light]</span><span>${isFr ? "Bascule ou définit le thème" : "Switch or set theme"}</span>
+    <span class="text-emerald-400 font-bold">lang [fr|en]</span><span>${isFr ? "Change la langue du portfolio" : "Switch site language"}</span>
+    <span class="text-emerald-400 font-bold">matrix</span><span>${isFr ? "Effet visuel Matrix" : "Matrix visual effect"}</span>
+    <span class="text-emerald-400 font-bold">clear / cls</span><span>${isFr ? "Efface l'écran du terminal" : "Clear the terminal screen"}</span>
+    <span class="text-emerald-400 font-bold">exit</span><span>${isFr ? "Ferme le terminal" : "Close terminal"}</span>
+  </div>
+</div>`);
+      break;
+
+    case "about":
+    case "whoami":
+      appendTerminalLine(`
+<div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-xs space-y-1 text-slate-300">
+  <p><strong class="text-white">Gonçalvès Cédrick</strong> — ${isFr ? "Développeur Web & Mobile Fullstack" : "Fullstack Web & Mobile Developer"}</p>
+  <p>📍 Ouagadougou, Burkina Faso</p>
+  <p>🎓 ${isFr ? "Licence Réseaux et Systèmes Informatiques (IST)" : "Bachelor in Networks & Computer Systems (IST)"}</p>
+  <p>🛡️ ${isFr ? "Stage développeur à la Brigade Centrale de Lutte Contre la Cybercriminalité (BCLCC)" : "Developer Intern at Central Cybercrime Investigation Brigade (BCLCC)"}</p>
+  <p class="text-slate-400">${isFr ? "Concepteur de plateformes métier sécurisées (Laravel, Flutter, React, MySQL) et architectures logicielles fiables." : "Designer of secure enterprise platforms (Laravel, Flutter, React, MySQL) with robust architecture."}</p>
+</div>`);
+      break;
+
+    case "skills":
+    case "stack":
+      appendTerminalLine(`
+<div class="space-y-2 text-xs mt-1">
+  <div><span class="text-blue-400 font-bold">● Backend & APIs:</span> <span class="text-slate-200">Laravel 11/12, PHP 8, APIs REST, MySQL, PostgreSQL, Eloquent ORM, Node.js, Auth RBAC</span></div>
+  <div><span class="text-indigo-400 font-bold">● Mobile:</span> <span class="text-slate-200">Flutter, Dart, SQLite, Provider / BLoC, Consommation REST, Offline-First</span></div>
+  <div><span class="text-purple-400 font-bold">● Frontend & CMS:</span> <span class="text-slate-200">React, Tailwind CSS, JavaScript ES6+, Vite, Strapi CMS, WordPress</span></div>
+  <div><span class="text-emerald-400 font-bold">● Systèmes & Sécurité:</span> <span class="text-slate-200">Réseaux & Systèmes (RSI), Modélisation BDD (Merise/UML), Git/GitHub, Audit & Traçabilité</span></div>
+</div>`);
+      break;
+
+    case "projects":
+    case "ls":
+      appendTerminalLine(`
+<div class="space-y-1.5 text-xs mt-1">
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">1. BCLCC</span>
+    <span class="text-slate-300">${isFr ? "Gestion des dossiers, plaintes & scellés (Laravel, RBAC, Audit)" : "Case files & evidence management (Laravel, RBAC, Audit)"}</span>
+    <span class="text-blue-400">[Phare]</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">2. Clinique</span>
+    <span class="text-slate-300">${isFr ? "Plateforme médicale de dossiers patients (PHP, MySQL)" : "Medical clinic management (PHP, MySQL)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">3. Clever-Group</span>
+    <span class="text-slate-300">${isFr ? "Site vitrine digital interactif (React, Vite, Tailwind)" : "Modern digital showcase (React, Vite, Tailwind)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">4. ACE Tech</span>
+    <span class="text-slate-300">${isFr ? "Site entreprise services informatiques (HTML5, CSS3, JS)" : "IT services platform (HTML5, CSS3, JS)"}</span>
+  </div>
+  <div class="flex items-center justify-between p-1.5 rounded bg-slate-900 border border-slate-800">
+    <span class="text-emerald-400 font-bold">5. PulseMobile</span>
+    <span class="text-slate-300">${isFr ? "Application mobile cross-platform (Flutter, Dart, API REST)" : "Cross-platform mobile app (Flutter, Dart, REST API)"}</span>
+  </div>
+</div>`);
+      break;
+
+    case "bclcc":
+      appendTerminalLine(`
+<div class="p-3 rounded-lg bg-slate-900 border border-blue-900/50 text-xs space-y-2 text-slate-300">
+  <div class="flex items-center gap-2 text-blue-400 font-bold">
+    <svg class="w-4 h-4"><use href="#icon-shield" /></svg>
+    <span>${isFr ? "Projet Phare : Brigade Centrale de Lutte Contre la Cybercriminalité" : "Featured Case Study: Cybercrime Investigation Brigade"}</span>
+  </div>
+  <p>${isFr ? "Application métier Laravel conçue pour numériser et sécuriser l'intégralité du traitement des dossiers d'infractions numériques :" : "Laravel enterprise web app designed to digitize and secure the full digital crime workflow:"}</p>
+  <ul class="list-disc list-inside space-y-1 text-slate-300">
+    <li><strong class="text-white">${isFr ? "Sécurité RBAC stricte :" : "Strict RBAC Security:"}</strong> ${isFr ? "Cloisonnement des accès entre enquêteurs, chefs d'unités et officiers de police judiciaire." : "Access partitioning across investigators, unit heads, and judicial officers."}</li>
+    <li><strong class="text-white">${isFr ? "Chaîne de conservation des scellés :" : "Chain of Custody Tracking:"}</strong> ${isFr ? "Traçabilité physique et numérique des éléments de preuve." : "Physical and digital evidence custody tracking."}</li>
+    <li><strong class="text-white">${isFr ? "Journal d'audit inviolable :" : "Tamper-Evident Audit Trail:"}</strong> ${isFr ? "Horodatage et enregistrement de chaque consultation, modification ou export." : "Timestamping and logging of every view, edit, and export."}</li>
+    <li><strong class="text-white">${isFr ? "Assistance technique :" : "Technical Assistance:"}</strong> ${isFr ? "Diagnostic matériel et logiciel des supports compromis." : "Hardware and software diagnostics on seized devices."}</li>
+  </ul>
+</div>`);
+      break;
+
+    case "contact":
+      appendTerminalLine(`
+<div class="space-y-1 text-xs text-slate-300 mt-1">
+  <p><span class="text-emerald-400 font-bold">WhatsApp:</span> <a href="https://wa.me/22606196835" target="_blank" class="text-cyan-300 underline">+226 06 19 68 35</a></p>
+  <p><span class="text-emerald-400 font-bold">Email:</span> <a href="mailto:goncalvescedrick32@gmail.com" class="text-cyan-300 underline">goncalvescedrick32@gmail.com</a></p>
+  <p><span class="text-emerald-400 font-bold">GitHub:</span> <a href="https://github.com/Goncalvescedrick" target="_blank" class="text-cyan-300 underline">github.com/Goncalvescedrick</a></p>
+  <p><span class="text-emerald-400 font-bold">LinkedIn:</span> <a href="https://www.linkedin.com/in/goncalvescedrick" target="_blank" class="text-cyan-300 underline">linkedin.com/in/goncalvescedrick</a></p>
+  <p><span class="text-emerald-400 font-bold">Location:</span> Ouagadougou, Burkina Faso</p>
+</div>`);
+      break;
+
+    case "cv":
+    case "download-cv":
+      appendTerminalLine(`<div class="text-emerald-400 text-xs">${isFr ? "✔ Ouverture du CV dans un nouvel onglet..." : "✔ Opening resume in a new tab..."}</div>`);
+      window.open("assets/cv/CV_Goncalves_Cedrick.pdf", "_blank", "noopener");
+      break;
+
+    case "theme":
+      if (args[0] === "dark") {
+        setTheme("dark");
+        appendTerminalLine(`<div class="text-xs text-blue-400">${isFr ? "Thème défini sur : Sombre" : "Theme set to: Dark"}</div>`);
+      } else if (args[0] === "light") {
+        setTheme("light");
+        appendTerminalLine(`<div class="text-xs text-blue-400">${isFr ? "Thème défini sur : Clair" : "Theme set to: Light"}</div>`);
+      } else {
+        const next = htmlElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        setTheme(next);
+        appendTerminalLine(`<div class="text-xs text-blue-400">${isFr ? `Thème basculé sur : ${next}` : `Theme toggled to: ${next}`}</div>`);
+      }
+      break;
+
+    case "lang":
+      if (args[0] === "fr" || args[0] === "en") {
+        currentLang = args[0];
+      } else {
+        currentLang = currentLang === "fr" ? "en" : "fr";
+      }
+      localStorage.setItem("lang", currentLang);
+      applyTranslations(currentLang);
+      appendTerminalLine(`<div class="text-xs text-blue-400">${currentLang === "fr" ? "Langue définie sur : Français (FR)" : "Language set to: English (EN)"}</div>`);
+      break;
+
+    case "matrix":
+      appendTerminalLine(`<div class="text-emerald-500 font-mono text-xs overflow-hidden leading-tight">
+01000011 01100101 01100100 01110010 01101001 01100011 01101011<br>
+01010011 01100101 01100011 01110101 01110010 01101001 01110100<br>
+Wake up, Neo... The Matrix has you. Follow the white rabbit 🐇.
+</div>`);
+      break;
+
+    case "sudo":
+      appendTerminalLine(`
+<div class="p-2 rounded bg-red-950/70 border border-red-800 text-red-300 text-xs">
+  <strong>[ALERTE SÉCURITÉ BCLCC]</strong> ${isFr ? "Tentative d'escalade de privilèges non autorisée. Incident consigné dans le journal d'audit horodaté." : "Unauthorized privilege escalation detected. Incident logged in tamper-evident security audit."}
+</div>`);
+      break;
+
+    case "clear":
+    case "cls":
+      if (terminalOutput) terminalOutput.innerHTML = "";
+      break;
+
+    case "exit":
+    case "quit":
+      closeTerminal();
+      break;
+
+    default:
+      appendTerminalLine(`
+<div class="text-xs text-rose-400">
+  ${isFr ? `Commande inconnue: <span class="font-bold text-white">${escapeHtml(cmd)}</span>. Tapez <span class="text-cyan-300 font-bold">help</span> pour la liste des commandes.` : `Command not found: <span class="font-bold text-white">${escapeHtml(cmd)}</span>. Type <span class="text-cyan-300 font-bold">help</span> to view all commands.`}
+</div>`);
+      break;
+  }
+}
+
+function escapeHtml(text) {
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#039;"
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Terminal Form Submit
+terminalForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!terminalInput) return;
+  const val = terminalInput.value;
+  terminalInput.value = "";
+  executeCommand(val);
+});
+
+// Terminal Keyboard Navigation (History + Tab Autocompletion)
+terminalInput?.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    e.preventDefault();
+    if (commandHistory.length > 0 && historyCursor > 0) {
+      historyCursor--;
+      terminalInput.value = commandHistory[historyCursor];
+    }
+  } else if (e.key === "ArrowDown") {
+    e.preventDefault();
+    if (historyCursor < commandHistory.length - 1) {
+      historyCursor++;
+      terminalInput.value = commandHistory[historyCursor];
+    } else {
+      historyCursor = commandHistory.length;
+      terminalInput.value = "";
+    }
+  } else if (e.key === "Tab") {
+    e.preventDefault();
+    const currentVal = terminalInput.value.trim().toLowerCase();
+    if (!currentVal) return;
+    const match = AVAILABLE_COMMANDS.find(c => c.startsWith(currentVal));
+    if (match) {
+      terminalInput.value = match;
+    }
+  }
+});
+
+// Global shortcut: Ctrl+K / Cmd+K to toggle terminal
+document.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+    e.preventDefault();
+    toggleTerminal();
+  } else if (e.key === "Escape" && cliTerminalModal?.classList.contains("is-open")) {
+    e.preventDefault();
+    closeTerminal();
+  }
+});
+
+// Event Listeners for Terminal controls
+terminalTriggerBtn?.addEventListener("click", openTerminal);
+terminalCloseBtn?.addEventListener("click", closeTerminal);
+
+terminalMaximizeBtn?.addEventListener("click", () => {
+  terminalWindow?.classList.toggle("is-maximized");
+});
+
+cliTerminalModal?.addEventListener("click", (e) => {
+  if (e.target === cliTerminalModal) {
+    closeTerminal();
+  }
 });
 
 // ═══════════════════════════════════════════════════════
